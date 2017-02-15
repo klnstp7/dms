@@ -1,0 +1,619 @@
+.p-10 {
+    padding: 10px;
+}
+
+.p-5 {
+    padding: 5px;
+}
+
+.m-t-5 {
+    margin-top: 5px;
+}
+
+.casetdst {
+    border: 1px solid #aec6ec
+}
+
+.nav {
+    background: #57607c;
+    height: 48px;
+}
+
+.nav-user,
+.nav-logo {
+    line-height: 48px;
+    font-size: 14px;
+}
+
+.nav-logo {
+    margin-left: 10px;
+}
+
+.nav-user {
+    margin-right: 20px;
+}
+
+.nav-logo ul li a,
+.nav-logo ul li a:hover,
+.nav-user a,
+.nav-user a:hover {
+    color: #fff;
+}
+
+.nav-logo .ico {
+    background: url("../images/title_logo.png") no-repeat;
+    width: 103px;
+    height: 32px;
+    margin-top: 8px;
+    margin-left: 8px;
+    margin-right: 20px;
+}
+
+.nav-user a,
+.nav-user a:hover {
+    margin-right: 10px;
+}
+
+.nav-user a i {
+    margin-right: 5px;
+}
+
+.nav-logo ul li {
+    padding: 0 15px;
+}
+
+.nav-logo ul li.current {
+    background: #27bdff;
+}
+
+.nav-logo ul li.current a,
+.nav-logo ul li.current a:hover {
+    color: #fff;
+}
+
+.nav-cityList {
+    border: 1px solid #57607c;
+    background: #fff;
+    color: #34b5e2;
+    width: 360px;
+    right: 1px;
+    top: 47px;
+    padding: 10px;
+    max-height:300px;
+    overflow:auto;
+}
+
+.nav-cityList a {
+    float: left;
+    color: #34b5e2;
+    text-align: center;
+    width: 25%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.nav-tab {
+    border: 1px solid #cddff6;
+    background: #e0ecff;
+}
+
+.nav-tab li {
+    width: 20%;
+    cursor: pointer;
+}
+.nav-tab-xs li{
+    width: 25%;
+}
+
+.nav-tab li.current {
+    background: #fff;
+}
+
+.nav-tab li .wrap {
+    border-right: 1px solid #cddff6;
+}
+
+.nav-tab li .wrap .nav-tab-wrap {
+    padding: 5px;
+    width: 140px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.nav-tab-xs li .wrap .nav-tab-wrap {
+    width:180px;
+}
+
+.nav-tab li .wrap .nav-tab-wrap .f-fr {
+    font-size: 16px;
+    margin-top: 3px;
+    text-align: center;
+    line-height: 1.5;
+    font-weight: 700;
+}
+
+.nav-tab li .wrap .nav-tab-wrap .ico {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-repeat: no-repeat;
+}
+
+.nav-tab li .wrap .nav-tab-wrap .num {
+    font-size: 20px;
+}
+
+.nav-tab li .wrap .nav-tab-wrap .special {
+    font-size: 16px;
+    line-height: 32px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.nav-tab li.first .ico {
+    background-image: url("../images/u.png");
+}
+
+.nav-tab li.second .ico {
+    background-image: url("../images/u1.png");
+}
+
+.nav-tab li.three .ico {
+    background-image: url("../images/u2.png");
+}
+
+.nav-tab li.four .ico {
+    background-image: url("../images/u3.png");
+}
+
+.nav-tab li.five .ico {
+    background-image: url("../images/u4.png");
+}
+
+.nav-tab li.first {
+    color: #e83e62;
+}
+
+.nav-tab li.second {
+    color: #743ee8;
+}
+
+.nav-tab li.three {
+    color: #e7aa3e;
+}
+
+.nav-tab li.four {
+    color: #664ed8;
+}
+
+.nav-tab li.five {
+    color: #5eb4c8;
+}
+
+.nav-tab li.five .wrap {
+    border-right: 0 none;
+}
+
+
+/*表格列头工具*/
+
+.toolbar {
+    background: #e0ecff;
+    margin-top: 5px;
+    margin-bottom: 2px;
+}
+
+.toolbar .toolbar-form {}
+
+.toolbar .toolbar-form .form-input,
+.toolbar .toolbar-form .form-button {
+    border: 1px solid #ccc;
+    height: 21px;
+    line-height: 21px;
+    display: inline-block;
+}
+
+.toolbar .toolbar-form .form-input {
+    border-right: 0 none;
+}
+
+.toolbar .toolbar-form .form-button {
+    background-color: #eee;
+    line-height: 23px;
+    height: 23px;
+    padding: 0 5px;
+}
+
+.toolbar .toolbar-btn-group {
+    margin-left: 5px;
+}
+
+.toolbar .toolbar-btn-group a {
+    margin-right: 10px;
+    color: #57607c;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.toolbar .toolbar-btn-group a i {
+    font-size: 18px;
+}
+
+.toolbar .toolbar-btn-group a .fa-arrow-circle-down {
+    color: green;
+}
+
+.toolbar .toolbar-btn-group a .fa-times-circle {
+    color: red;
+}
+
+.toolbar .toolbar-btn-group a .fa-plus-circle {
+    color: #458B00;
+}
+
+.toolbar .toolbar-btn-group a .fa-navicon{
+    color: #57607c;
+}
+
+
+/*表单*/
+
+.form-tb,
+.form-tb table {
+    width: 100%;
+}
+
+.form-tb table tr td {
+    padding: 2px;
+    border: 1px solid #ccc;
+}
+
+.form-tb table tr td.fuild-width {
+    width: 72px;
+    text-align: right;
+    background: #eee;
+    letter-spacing: 1px;
+}
+
+.form-tb table tr td input.inpt,
+.form-tb table tr td select.inpt,
+.form-tb table tr td textarea.inpt {
+    width: 100%;
+    border: 0 none;
+    line-height: 22px;
+}
+
+.form-tb table tr td textarea.inpt {
+    height: 72px;
+}
+
+.form-tb table tr td input.inpt.laydate-icon {
+    width: auto;
+}
+
+.form-tb table tr td input.inpt.error-border {
+    border: 1px solid #f00
+}
+
+.form-tb .form-tb-info {
+    line-height: 24px;
+    font-size: 14px;
+}
+
+
+/*左右布局*/
+
+.autoprefixed .autoprefixed-fl {
+    float: left;
+    width: 100%;
+}
+
+.autoprefixed .autoprefixed-fl .autoprefixed-fl-wrap {
+    margin-right: 270px;
+}
+
+.autoprefixed.md .autoprefixed-fl .autoprefixed-fl-wrap {
+    margin-right: 550px;
+}
+
+.autoprefixed .autoprefixed-fr {
+    position: relative;
+    float: right;
+    width: 260px;
+    margin-left: -260px;
+}
+
+.autoprefixed.md .autoprefixed-fr {
+    width: 540px;
+    margin-left: -540px;
+}
+
+
+/*块级*/
+
+.panel {
+    border: 1px solid #aec6ec;
+}
+
+.panel .panel-title {
+    background: #e0ecff;
+    color: #666;
+    line-height: 1.5;
+    padding: 4px 6px;
+}
+
+.panel .panel-title .txt {
+    margin-left: 5px;
+}
+
+.panel .panel-body {
+    padding: 5px;
+}
+
+
+/*图标*/
+
+.ico {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    margin-right: 8px;
+}
+
+.ico-del {
+    background-image: url("../images/u5.png")
+}
+
+.ico-edit {
+    background-image: url("../images/u6.png")
+}
+
+.ico-info {
+    background-image: url("../images/u7.png")
+}
+
+
+/*按钮*/
+
+.btn {
+    display: inline-block;
+    padding: 5px 45px;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.btn-xs {
+    padding: 5px 10px;
+}
+
+.btn-cancel {
+    background: #fff;
+    color: red;
+    border: 1px solid red;
+}
+
+.btn-save {
+    background: #09f;
+    color: #fff;
+    border: 1px solid #09f;
+}
+
+.btn-save:hover {
+    background: #0388e0;
+    border: 1px solid #0388e0;
+}
+
+.btn-import {
+    border: 1px solid #093;
+    color: #fff;
+    background: #093;
+}
+
+.btn-reimport {
+    border: 1px solid #199ED8;
+    color: #fff;
+    background: #199ED8;
+}
+
+.btn-check {
+    background: #e0ecff;
+    border: 1px solid #cddff6;
+}
+
+.btn-check:hover {
+    background: #cddff6;
+    border: 1px solid #7d8998;
+}
+
+
+/*表格*/
+
+table.dataTable thead th,
+table.dataTable thead td,
+table.dataTable.no-footer {
+    border-bottom: 0 none;
+}
+
+.dataTable.display thead th{
+    background-color: #ececec;
+}
+
+.display.dataTable tr td a,
+.form-edit tr td a {
+    color: #34b5e2;
+}
+
+.display.dataTable tr td a i {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.display.dataTable.hover tbody tr.selected td a,
+.display.dataTable.hover tbody tr:hover.selected td a,
+.display.dataTable.display tbody tr:hover.selected td a {
+    color: #fff;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button,
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    background: none !important;
+    color: #333 !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: #008CBA !important;
+    color: #fff !important;
+    border-color: #008CBA;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: #fff !important;
+}
+
+.dataTables_wrapper.no-footer .dataTables_scrollBody {
+    border-bottom: 0 none;
+}
+
+table.dataTable.compact thead th,
+table.dataTable.compact thead td {
+    padding: 8px 17px 8px 4px;
+    line-height: 24px;
+}
+table.dataTable .fa{
+    font-size: 16px;
+}
+table.dataTable .fa.green{
+    color:green;
+}
+table.dataTable .fa.red{
+    color:red;
+}
+
+
+
+.btn-check i {
+    margin-right: 10px;
+}
+
+.casetdst .casetdstTitle {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.casetdst .casetdstTitle tr td {
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.casetdst .casetdstTitle tr td,
+.casetdst .casetdstTitle tr td label,
+.casetdst .casetdstTitle tr td label input {
+    vertical-align: middle;
+}
+
+.casetdst .casetdstBody {}
+
+.caseUpload {
+    display: none;
+}
+
+.caseUpload .attch {
+    width: 420px;
+    margin: 0 auto;
+}
+
+.caseUpload .attch.doc {
+    width: 320px;
+}
+
+.link {
+    margin-left: 10px;
+    color: #27bdff;
+}
+
+.uploadify {
+    margin-bottom: 0;
+}
+
+.attch .btn {
+    margin-left: 10px;
+}
+
+.updataResult {}
+
+.updataResult ul {}
+
+.updataResult ul li {
+    border: 1px solid #ccc;
+    padding: 5px 50px;
+    display: inline-block;
+    text-align: center;
+    float: left;
+    position: relative;
+    cursor: pointer;
+}
+
+.updataResult ul li.noborder {
+    border-right: 0 none;
+}
+.updataResult ul li.current{
+    background: #eee;
+}
+
+.updataResult ul li a {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+}
+
+.updataResult ul li .total {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    line-height: 24px;
+    color: red;
+    font-size: 16px;
+}
+
+.casetdst.wrapstatue {
+    margin-top: 5px;
+}
+
+.casetdst.wrapstatue .result {
+    width: 300px;
+    height: 240px;
+    margin: 20px auto;
+    color: red;
+}
+
+.casetdst.wrapstatue .result .txt {
+    padding: 40px 20px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.updataResult .btn {
+    width: 140px;
+}
+
+.wrapstatue{
+    display:none;
+    width:100%;
+}
+.wrapstatue table.display{
+    width:100%;
+}
