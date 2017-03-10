@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.1.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-4.1.xsd">
+
+	<!-- 引入配置文件 -->
+	<bean id="propertyConfigurer"
+		  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:config.properties" />
+	</bean>
+
+	<!-- 配置数据源 -->
+	<bean id="BEIJING" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<!-- 初始化连接大小 -->
+		<property name="initialSize" value="${initialSize}"></property>
+		<!-- 连接池最大数量 -->
+		<property name="maxActive" value="${maxActive}"></property>
+		<!-- 连接池最大空闲 -->
+		<property name="maxIdle" value="${maxIdle}"></property>
+		<!-- 连接池最小空闲 -->
+		<property name="minIdle" value="${minIdle}"></property>
+		<!-- 获取连接最大等待时间 -->
+		<property name="maxWait" value="${maxWait}"></property>
+	</bean>
+
+	<!-- 配置数据源 -->
+	<bean id="SHANGHAI" class="org.apache.commons.dbcp.BasicDataSource"
+		  destroy-method="close">
+		<property name="driverClassName" value="${jdbc1.driver}" />
+		<property name="url" value="${jdbc1.url}" />
+		<property name="username" value="${jdbc1.username}" />
+		<property name="password" value="${jdbc1.password}" />
+		<!-- 初始化连接大小 -->
+		<property name="initialSize" value="${initialSize}"></property>
+		<!-- 连接池最大数量 -->
+		<property name="maxActive" value="${maxActive}"></property>
+		<!-- 连接池最大空闲 -->
+		<property name="maxIdle" value="${maxIdle}"></property>
+		<!-- 连接池最小空闲 -->
+		<property name="minIdle" value="${minIdle}"></property>
+		<!-- 获取连接最大等待时间 -->
+		<property name="maxWait" value="${maxWait}"></property>
+	</bean>
+
+	<!--统一的dataSource-->
+	<bean id="dynamicDataSource" class="com.yunfang.dms.dao.datasource.ThreadLocalRountingDataSource" >
+		<property name="targetDataSources">
+			<map key-type="com.yunfang.dms.enums.DataSource">
+				<!--通过不同的key决定用哪个dataSource-->
+				<entry value-ref="BEIJING" key="BEIJING"></entry>
+				<entry value-ref="SHANGHAI" key="SHANGHAI"></entry>
+			</map>
+		</property>
+		<!--设置默认的dataSource-->
+		<property name="defaultTargetDataSource" ref="BEIJING">
+		</property>
+	</bean>
+
+	<!-- 配置mybatis的SessionFactory -->
+	 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+	    <property name="dataSource" ref="dynamicDataSource" />
+
+		 <!-- 	    <property name="typeAliasesPackage" value="com.yunfang.estimatemiddleware.model" /> -->
+	</bean>
+	
+	<!-- 自动扫描映射器 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
+		<property name="basePackage" value="com.yunfang.dms.dao.mapper" />
+	</bean>
+	
+	<!-- 数据库事务策略-->  
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+        <property name="dataSource">  
+            <ref bean="dynamicDataSource" />
+        </property>  
+    </bean>  
+	
+	<!-- 配置事务增强处理Bean，指定事务管理器 -->
+	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+		<!-- 配置详细事务处理语义 -->
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="find*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="select*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="load*" propagation="SUPPORTS" read-only="true" />
+
+			<!-- 其他采用默认事务方式 -->
+			<tx:method name="*" />
+
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- Spring aop事务管理 -->
+	<aop:config>
+		<!-- 配置切入点 -->
+		<aop:pointcut id="transactionPointcut" expression="execution(* com.yunfang.dms.service.*impl.*(..))" />
+		<!-- 指定在txAdvice切入点应用txAdvice事务增强处理 -->
+		<aop:advisor pointcut-ref="transactionPointcut"
+			advice-ref="transactionAdvice" />
+	</aop:config>
+
+	
+</beans>

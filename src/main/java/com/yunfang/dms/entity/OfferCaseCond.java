@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class OfferCaseCond {
+public class OfferCaseCond extends BaseRowBound  {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -337,7 +337,7 @@ public class OfferCaseCond {
         }
 
         public Criteria andDistrictLike(String value) {
-            addCriterion("District like", value, "district");
+            addCriterion("District like", "%"+value+"%", "district");
             return (Criteria) this;
         }
 
@@ -407,7 +407,7 @@ public class OfferCaseCond {
         }
 
         public Criteria andRegionLike(String value) {
-            addCriterion("Region like", value, "region");
+            addCriterion("Region like", "%"+value+"%", "region");
             return (Criteria) this;
         }
 
@@ -477,7 +477,7 @@ public class OfferCaseCond {
         }
 
         public Criteria andCommunityLike(String value) {
-            addCriterion("Community like", value, "community");
+            addCriterion("Community like", "%"+value+"%", "community");
             return (Criteria) this;
         }
 
@@ -547,7 +547,7 @@ public class OfferCaseCond {
         }
 
         public Criteria andAddressLike(String value) {
-            addCriterion("Address like", value, "address");
+            addCriterion("Address like", "%"+value+"%", "address");
             return (Criteria) this;
         }
 
@@ -836,73 +836,73 @@ public class OfferCaseCond {
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2IsNull() {
-            addCriterion("BuildYear2 is null");
+        public Criteria andBuildYearIsNull() {
+            addCriterion("BuildYear is null");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2IsNotNull() {
-            addCriterion("BuildYear2 is not null");
+        public Criteria andBuildYearIsNotNull() {
+            addCriterion("BuildYear is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2EqualTo(String value) {
-            addCriterion("BuildYear2 =", value, "buildyear2");
+        public Criteria andBuildYearEqualTo(String value) {
+            addCriterion("BuildYear =", value, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2NotEqualTo(String value) {
-            addCriterion("BuildYear2 <>", value, "buildyear2");
+        public Criteria andBuildYearNotEqualTo(String value) {
+            addCriterion("BuildYear <>", value, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2GreaterThan(String value) {
-            addCriterion("BuildYear2 >", value, "buildyear2");
+        public Criteria andBuildYearGreaterThan(String value) {
+            addCriterion("BuildYear >", value, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2GreaterThanOrEqualTo(String value) {
-            addCriterion("BuildYear2 >=", value, "buildyear2");
+        public Criteria andBuildYearGreaterThanOrEqualTo(String value) {
+            addCriterion("BuildYear >=", value, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2LessThan(String value) {
-            addCriterion("BuildYear2 <", value, "buildyear2");
+        public Criteria andBuildYearLessThan(String value) {
+            addCriterion("BuildYear <", value, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2LessThanOrEqualTo(String value) {
-            addCriterion("BuildYear2 <=", value, "buildyear2");
+        public Criteria andBuildYearLessThanOrEqualTo(String value) {
+            addCriterion("BuildYear <=", value, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2Like(String value) {
-            addCriterion("BuildYear2 like", value, "buildyear2");
+        public Criteria andBuildYearLike(String value) {
+            addCriterion("BuildYear like", value, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2NotLike(String value) {
-            addCriterion("BuildYear2 not like", value, "buildyear2");
+        public Criteria andBuildYearNotLike(String value) {
+            addCriterion("BuildYear not like", value, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2In(List<String> values) {
-            addCriterion("BuildYear2 in", values, "buildyear2");
+        public Criteria andBuildYearIn(List<String> values) {
+            addCriterion("BuildYear in", values, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2NotIn(List<String> values) {
-            addCriterion("BuildYear2 not in", values, "buildyear2");
+        public Criteria andBuildYearNotIn(List<String> values) {
+            addCriterion("BuildYear not in", values, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2Between(String value1, String value2) {
-            addCriterion("BuildYear2 between", value1, value2, "buildyear2");
+        public Criteria andBuildYearBetween(String value1, String value2) {
+            addCriterion("BuildYear between", value1, value2, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2NotBetween(String value1, String value2) {
-            addCriterion("BuildYear2 not between", value1, value2, "buildyear2");
+        public Criteria andBuildYearNotBetween(String value1, String value2) {
+            addCriterion("BuildYear not between", value1, value2, "buildYear");
             return (Criteria) this;
         }
 
@@ -1413,6 +1413,66 @@ public class OfferCaseCond {
 
         public Criteria andOperatorNotBetween(String value1, String value2) {
             addCriterion("Operator not between", value1, value2, "operator");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyIdIsNull() {
+            addCriterion("CompanyID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyIdIsNotNull() {
+            addCriterion("CompanyID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyIdEqualTo(Integer value) {
+            addCriterion("CompanyID =", value, "companyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyIdNotEqualTo(Integer value) {
+            addCriterion("CompanyID <>", value, "companyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyIdGreaterThan(Integer value) {
+            addCriterion("CompanyID >", value, "companyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("CompanyID >=", value, "companyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyIdLessThan(Integer value) {
+            addCriterion("CompanyID <", value, "companyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyIdLessThanOrEqualTo(Integer value) {
+            addCriterion("CompanyID <=", value, "companyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyIdIn(List<Integer> values) {
+            addCriterion("CompanyID in", values, "companyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyIdNotIn(List<Integer> values) {
+            addCriterion("CompanyID not in", values, "companyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyIdBetween(Integer value1, Integer value2) {
+            addCriterion("CompanyID between", value1, value2, "companyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("CompanyID not between", value1, value2, "companyId");
             return (Criteria) this;
         }
     }

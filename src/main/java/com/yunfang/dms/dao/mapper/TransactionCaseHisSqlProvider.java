@@ -100,8 +100,8 @@ public class TransactionCaseHisSqlProvider {
             sql.VALUES("Remark", "#{remark,jdbcType=VARCHAR}");
         }
         
-        if (record.getPricetime() != null) {
-            sql.VALUES("PriceTime", "#{pricetime,jdbcType=TIMESTAMP}");
+        if (record.getPriceTime() != null) {
+            sql.VALUES("PriceTime", "#{priceTime,jdbcType=TIMESTAMP}");
         }
         
         if (record.getCreateDateTime() != null) {
@@ -279,8 +279,8 @@ public class TransactionCaseHisSqlProvider {
             sql.SET("Remark = #{record.remark,jdbcType=VARCHAR}");
         }
         
-        if (record.getPricetime() != null) {
-            sql.SET("PriceTime = #{record.pricetime,jdbcType=TIMESTAMP}");
+        if (record.getPriceTime() != null) {
+            sql.SET("PriceTime = #{record.priceTime,jdbcType=TIMESTAMP}");
         }
         
         if (record.getCreateDateTime() != null) {
@@ -322,7 +322,7 @@ public class TransactionCaseHisSqlProvider {
         sql.SET("TotalPrice = #{record.totalPrice,jdbcType=DECIMAL}");
         sql.SET("ProjectAddress = #{record.projectAddress,jdbcType=VARCHAR}");
         sql.SET("Remark = #{record.remark,jdbcType=VARCHAR}");
-        sql.SET("PriceTime = #{record.pricetime,jdbcType=TIMESTAMP}");
+        sql.SET("PriceTime = #{record.priceTime,jdbcType=TIMESTAMP}");
         sql.SET("CreateDateTime = #{record.createDateTime,jdbcType=TIMESTAMP}");
         sql.SET("Operator = #{record.operator,jdbcType=VARCHAR}");
         sql.SET("ExtendCol = #{record.extendCol,jdbcType=LONGVARCHAR}");
@@ -355,7 +355,7 @@ public class TransactionCaseHisSqlProvider {
         sql.SET("TotalPrice = #{record.totalPrice,jdbcType=DECIMAL}");
         sql.SET("ProjectAddress = #{record.projectAddress,jdbcType=VARCHAR}");
         sql.SET("Remark = #{record.remark,jdbcType=VARCHAR}");
-        sql.SET("PriceTime = #{record.pricetime,jdbcType=TIMESTAMP}");
+        sql.SET("PriceTime = #{record.priceTime,jdbcType=TIMESTAMP}");
         sql.SET("CreateDateTime = #{record.createDateTime,jdbcType=TIMESTAMP}");
         sql.SET("Operator = #{record.operator,jdbcType=VARCHAR}");
         
@@ -440,8 +440,8 @@ public class TransactionCaseHisSqlProvider {
             sql.SET("Remark = #{remark,jdbcType=VARCHAR}");
         }
         
-        if (record.getPricetime() != null) {
-            sql.SET("PriceTime = #{pricetime,jdbcType=TIMESTAMP}");
+        if (record.getPriceTime() != null) {
+            sql.SET("PriceTime = #{priceTime,jdbcType=TIMESTAMP}");
         }
         
         if (record.getCreateDateTime() != null) {

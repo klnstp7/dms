@@ -1,6 +1,8 @@
 package com.yunfang.dms.entity;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TransactionCase {
@@ -42,7 +44,7 @@ public class TransactionCase {
 
     private Integer companyId;
 
-    private Date pricetime;
+    private Date priceTime;
 
     private Date createDateTime;
 
@@ -202,28 +204,43 @@ public class TransactionCase {
         this.companyId = companyId;
     }
 
-    public Date getPricetime() {
-        return pricetime;
+    public Date getPriceTime() {
+        return priceTime;
     }
 
-    public void setPricetime(Date pricetime) {
-        this.pricetime = pricetime;
+    public void setPriceTime(String pricetime) throws ParseException {
+        if (pricetime != null || !pricetime.trim().equals("")) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            this.priceTime = sdf.parse(pricetime);
+        } else {
+            this.priceTime = new Date();
+        }
     }
 
     public Date getCreateDateTime() {
         return createDateTime;
     }
 
-    public void setCreateDateTime(Date createDateTime) {
-        this.createDateTime = createDateTime;
+    public void setCreateDateTime(String createDateTime) throws ParseException {
+        if (createDateTime != null && !createDateTime.trim().equals("")) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            this.createDateTime = sdf.parse(createDateTime);
+        } else {
+            this.createDateTime = new Date();
+        }
     }
 
     public Date getLastUpdateTime() {
         return lastUpdateTime;
     }
 
-    public void setLastUpdateTime(Date lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
+    public void setLastUpdateTime(String lastUpdateTime) throws ParseException {
+        if (lastUpdateTime != null || !lastUpdateTime.trim().equals("")) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            this.lastUpdateTime = sdf.parse(lastUpdateTime);
+        } else {
+            this.lastUpdateTime = new Date();
+        }
     }
 
     public String getExtendCol() {

@@ -138,14 +138,18 @@ public class UnitBaseDataSqlProvider {
         sql.SELECT("CreateDateTime");
         sql.SELECT("LastUpdateTime");
         sql.SELECT("CompanyID");
+        sql.SELECT("ExtendCol");
         sql.FROM("unitbasedata");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
             sql.ORDER_BY(example.getOrderByClause());
         }
-        
-        return sql.toString();
+        String sqlStr=sql.toString();
+        if(example.getLimit()>0){
+            sqlStr+=" limit " + (example.getStart()>0?example.getStart():"0")+","+example.getLimit();
+        }
+        return sqlStr;
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {

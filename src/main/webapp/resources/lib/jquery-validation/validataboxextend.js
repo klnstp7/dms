@@ -41,17 +41,35 @@ $(function() {
 
     // 只能输入[0-9]数字
     jQuery.validator.addMethod("isDigits", function(value, element) {
-        return this.optional(element) || /^\d+$/.test(value);
+        var flag= false;
+        if(value==""){
+            flag = true;
+        }else{
+            flag =  /^\d+$/.test(value);
+        }
+        return flag;
     }, "只能输入0-9数字");
 
     // 只能输入1-9正整数
     jQuery.validator.addMethod("posint", function(value, element) {
-        return this.optional(element) || /^[1-9]\d*$/.test(value);
+        var flag= false;
+        if(value==""){
+            flag = true;
+        }else{
+            flag = /^[1-9]\d*$/.test(value);
+        }
+        return flag;
     }, "只能输入1-9正整数");
 
     // 保留至多两位小数
     jQuery.validator.addMethod("posintdec", function(value, element) {
-        return this.optional(element) || /^(?!0+(?:\.0+)?$)(?:[1-9]\d*|0)(?:\.\d{1,2})?$/.test($.trim(value));
+        var flag= false;
+        if(value==""){
+            flag = true;
+        }else{
+            flag =/^(?!0+(?:\.0+)?$)(?:[1-9]\d*|0)(?:\.\d{1,2})?$/.test(value);
+        }
+        return flag;
     }, "保留至多两位小数");
 
     //总楼层大于或等于所在楼层
@@ -69,43 +87,4 @@ $(function() {
         }
         return flag;
     }, $.validator.format("总楼层大于或等于所在楼层!"));
-
-
-    //整数
-    jQuery.validator.addMethod("Integer", function(value, element) {
-        return this.optional(element) || (/^-?[1-9]\d*$/.test(value));
-    }, "请输入整数");
-
-
-    // 建成年代 1000~9999
-    jQuery.validator.addMethod("buildYear", function(value, element) {
-        debugger;
-        var flag = false;
-         if (("" + value).length == 0) {
-            flag = true;
-         }else{
-             if (("" + value).length != 4) {
-                    flag = false;
-            } else {
-                if (Number(value) >= 1000 && Number(value) <= 9999) {
-                    flag = true;
-                } else {
-                    flag = false;
-                } 
-            }
-         }  
-        return flag;
-    }, "请输入1900~2049的整数");
-
-
-    // 空白字符
-    jQuery.validator.addMethod("isNull", function(value, element) {
-        var flag;
-        if (/\s+/.test(value)) {
-            flag = false;
-        } else {
-            flag = true;
-        }
-        return flag;
-    }, "请勿输入空格字符");
 });

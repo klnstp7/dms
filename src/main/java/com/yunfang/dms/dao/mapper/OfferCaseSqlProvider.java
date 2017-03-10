@@ -1,9 +1,9 @@
 package com.yunfang.dms.dao.mapper;
 
 import com.yunfang.dms.entity.OfferCase;
+import com.yunfang.dms.entity.OfferCaseCond;
 import com.yunfang.dms.entity.OfferCaseCond.Criteria;
 import com.yunfang.dms.entity.OfferCaseCond.Criterion;
-import com.yunfang.dms.entity.OfferCaseCond;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
@@ -12,25 +12,21 @@ public class OfferCaseSqlProvider {
 
     public String countByExample(OfferCaseCond example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("offercase_his");
+        sql.SELECT("count(*)").FROM("offercase");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
     public String deleteByExample(OfferCaseCond example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("offercase_his");
+        sql.DELETE_FROM("offercase");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
     public String insertSelective(OfferCase record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("offercase_his");
-        
-        if (record.getOfferCaseId() != null) {
-            sql.VALUES("OfferCaseID", "#{offerCaseId,jdbcType=BIGINT}");
-        }
+        sql.INSERT_INTO("offercase");
         
         if (record.getCityName() != null) {
             sql.VALUES("CityName", "#{cityName,jdbcType=VARCHAR}");
@@ -68,8 +64,8 @@ public class OfferCaseSqlProvider {
             sql.VALUES("Toward", "#{toward,jdbcType=VARCHAR}");
         }
         
-        if (record.getBuildyear2() != null) {
-            sql.VALUES("BuildYear2", "#{buildyear2,jdbcType=VARCHAR}");
+        if (record.getBuildYear() != null) {
+            sql.VALUES("BuildYear", "#{buildYear,jdbcType=VARCHAR}");
         }
         
         if (record.getArea() != null) {
@@ -96,12 +92,16 @@ public class OfferCaseSqlProvider {
             sql.VALUES("DataSource", "#{dataSource,jdbcType=VARCHAR}");
         }
         
+        if (record.getCompanyId() != null) {
+            sql.VALUES("CompanyID", "#{companyId,jdbcType=INTEGER}");
+        }
+        
         if (record.getCreateDateTime() != null) {
             sql.VALUES("CreateDateTime", "#{createDateTime,jdbcType=TIMESTAMP}");
         }
         
-        if (record.getOperator() != null) {
-            sql.VALUES("Operator", "#{operator,jdbcType=VARCHAR}");
+        if (record.getLastUpdateTime() != null) {
+            sql.VALUES("LastUpdateTime", "#{lastUpdateTime,jdbcType=TIMESTAMP}");
         }
         
         if (record.getExtendCol() != null) {
@@ -118,7 +118,6 @@ public class OfferCaseSqlProvider {
         } else {
             sql.SELECT("ID");
         }
-        sql.SELECT("OfferCaseID");
         sql.SELECT("CityName");
         sql.SELECT("District");
         sql.SELECT("Region");
@@ -128,17 +127,18 @@ public class OfferCaseSqlProvider {
         sql.SELECT("Floor");
         sql.SELECT("TotalFloor");
         sql.SELECT("Toward");
-        sql.SELECT("BuildYear2");
+        sql.SELECT("BuildYear");
         sql.SELECT("Area");
         sql.SELECT("Price");
         sql.SELECT("TotalPrice");
         sql.SELECT("Remark");
         sql.SELECT("OfferTime");
         sql.SELECT("DataSource");
+        sql.SELECT("CompanyID");
         sql.SELECT("CreateDateTime");
-        sql.SELECT("Operator");
+        sql.SELECT("LastUpdateTime");
         sql.SELECT("ExtendCol");
-        sql.FROM("offercase_his");
+        sql.FROM("offercase");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -155,7 +155,6 @@ public class OfferCaseSqlProvider {
         } else {
             sql.SELECT("ID");
         }
-        sql.SELECT("OfferCaseID");
         sql.SELECT("CityName");
         sql.SELECT("District");
         sql.SELECT("Region");
@@ -165,23 +164,29 @@ public class OfferCaseSqlProvider {
         sql.SELECT("Floor");
         sql.SELECT("TotalFloor");
         sql.SELECT("Toward");
-        sql.SELECT("BuildYear2");
+        sql.SELECT("BuildYear");
         sql.SELECT("Area");
         sql.SELECT("Price");
         sql.SELECT("TotalPrice");
         sql.SELECT("Remark");
         sql.SELECT("OfferTime");
         sql.SELECT("DataSource");
+        sql.SELECT("CompanyID");
         sql.SELECT("CreateDateTime");
-        sql.SELECT("Operator");
-        sql.FROM("offercase_his");
+        sql.SELECT("LastUpdateTime");
+        sql.FROM("offercase");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
             sql.ORDER_BY(example.getOrderByClause());
         }
+
+        String sqlStr=sql.toString();
+        if(example.getLimit()>0){
+            sqlStr+=" limit " + (example.getStart()>0?example.getStart():"0")+","+example.getLimit();
+        }
         
-        return sql.toString();
+        return sqlStr;
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
@@ -189,14 +194,10 @@ public class OfferCaseSqlProvider {
         OfferCaseCond example = (OfferCaseCond) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("offercase_his");
+        sql.UPDATE("offercase");
         
         if (record.getId() != null) {
             sql.SET("ID = #{record.id,jdbcType=BIGINT}");
-        }
-        
-        if (record.getOfferCaseId() != null) {
-            sql.SET("OfferCaseID = #{record.offerCaseId,jdbcType=BIGINT}");
         }
         
         if (record.getCityName() != null) {
@@ -235,8 +236,8 @@ public class OfferCaseSqlProvider {
             sql.SET("Toward = #{record.toward,jdbcType=VARCHAR}");
         }
         
-        if (record.getBuildyear2() != null) {
-            sql.SET("BuildYear2 = #{record.buildyear2,jdbcType=VARCHAR}");
+        if (record.getBuildYear() != null) {
+            sql.SET("BuildYear = #{record.buildYear,jdbcType=VARCHAR}");
         }
         
         if (record.getArea() != null) {
@@ -263,12 +264,16 @@ public class OfferCaseSqlProvider {
             sql.SET("DataSource = #{record.dataSource,jdbcType=VARCHAR}");
         }
         
+        if (record.getCompanyId() != null) {
+            sql.SET("CompanyID = #{record.companyId,jdbcType=INTEGER}");
+        }
+        
         if (record.getCreateDateTime() != null) {
             sql.SET("CreateDateTime = #{record.createDateTime,jdbcType=TIMESTAMP}");
         }
         
-        if (record.getOperator() != null) {
-            sql.SET("Operator = #{record.operator,jdbcType=VARCHAR}");
+        if (record.getLastUpdateTime() != null) {
+            sql.SET("LastUpdateTime = #{record.lastUpdateTime,jdbcType=TIMESTAMP}");
         }
         
         if (record.getExtendCol() != null) {
@@ -281,10 +286,9 @@ public class OfferCaseSqlProvider {
 
     public String updateByExampleWithBLOBs(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("offercase_his");
+        sql.UPDATE("offercase");
         
         sql.SET("ID = #{record.id,jdbcType=BIGINT}");
-        sql.SET("OfferCaseID = #{record.offerCaseId,jdbcType=BIGINT}");
         sql.SET("CityName = #{record.cityName,jdbcType=VARCHAR}");
         sql.SET("District = #{record.district,jdbcType=VARCHAR}");
         sql.SET("Region = #{record.region,jdbcType=VARCHAR}");
@@ -294,15 +298,16 @@ public class OfferCaseSqlProvider {
         sql.SET("Floor = #{record.floor,jdbcType=INTEGER}");
         sql.SET("TotalFloor = #{record.totalFloor,jdbcType=INTEGER}");
         sql.SET("Toward = #{record.toward,jdbcType=VARCHAR}");
-        sql.SET("BuildYear2 = #{record.buildyear2,jdbcType=VARCHAR}");
+        sql.SET("BuildYear = #{record.buildYear,jdbcType=VARCHAR}");
         sql.SET("Area = #{record.area,jdbcType=DECIMAL}");
         sql.SET("Price = #{record.price,jdbcType=DECIMAL}");
         sql.SET("TotalPrice = #{record.totalPrice,jdbcType=DECIMAL}");
         sql.SET("Remark = #{record.remark,jdbcType=VARCHAR}");
         sql.SET("OfferTime = #{record.offerTime,jdbcType=TIMESTAMP}");
         sql.SET("DataSource = #{record.dataSource,jdbcType=VARCHAR}");
+        sql.SET("CompanyID = #{record.companyId,jdbcType=INTEGER}");
         sql.SET("CreateDateTime = #{record.createDateTime,jdbcType=TIMESTAMP}");
-        sql.SET("Operator = #{record.operator,jdbcType=VARCHAR}");
+        sql.SET("LastUpdateTime = #{record.lastUpdateTime,jdbcType=TIMESTAMP}");
         sql.SET("ExtendCol = #{record.extendCol,jdbcType=LONGVARCHAR}");
         
         OfferCaseCond example = (OfferCaseCond) parameter.get("example");
@@ -312,10 +317,9 @@ public class OfferCaseSqlProvider {
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("offercase_his");
+        sql.UPDATE("offercase");
         
         sql.SET("ID = #{record.id,jdbcType=BIGINT}");
-        sql.SET("OfferCaseID = #{record.offerCaseId,jdbcType=BIGINT}");
         sql.SET("CityName = #{record.cityName,jdbcType=VARCHAR}");
         sql.SET("District = #{record.district,jdbcType=VARCHAR}");
         sql.SET("Region = #{record.region,jdbcType=VARCHAR}");
@@ -325,15 +329,16 @@ public class OfferCaseSqlProvider {
         sql.SET("Floor = #{record.floor,jdbcType=INTEGER}");
         sql.SET("TotalFloor = #{record.totalFloor,jdbcType=INTEGER}");
         sql.SET("Toward = #{record.toward,jdbcType=VARCHAR}");
-        sql.SET("BuildYear2 = #{record.buildyear2,jdbcType=VARCHAR}");
+        sql.SET("BuildYear = #{record.buildYear,jdbcType=VARCHAR}");
         sql.SET("Area = #{record.area,jdbcType=DECIMAL}");
         sql.SET("Price = #{record.price,jdbcType=DECIMAL}");
         sql.SET("TotalPrice = #{record.totalPrice,jdbcType=DECIMAL}");
         sql.SET("Remark = #{record.remark,jdbcType=VARCHAR}");
         sql.SET("OfferTime = #{record.offerTime,jdbcType=TIMESTAMP}");
         sql.SET("DataSource = #{record.dataSource,jdbcType=VARCHAR}");
+        sql.SET("CompanyID = #{record.companyId,jdbcType=INTEGER}");
         sql.SET("CreateDateTime = #{record.createDateTime,jdbcType=TIMESTAMP}");
-        sql.SET("Operator = #{record.operator,jdbcType=VARCHAR}");
+        sql.SET("LastUpdateTime = #{record.lastUpdateTime,jdbcType=TIMESTAMP}");
         
         OfferCaseCond example = (OfferCaseCond) parameter.get("example");
         applyWhere(sql, example, true);
@@ -342,11 +347,7 @@ public class OfferCaseSqlProvider {
 
     public String updateByPrimaryKeySelective(OfferCase record) {
         SQL sql = new SQL();
-        sql.UPDATE("offercase_his");
-        
-        if (record.getOfferCaseId() != null) {
-            sql.SET("OfferCaseID = #{offerCaseId,jdbcType=BIGINT}");
-        }
+        sql.UPDATE("offercase");
         
         if (record.getCityName() != null) {
             sql.SET("CityName = #{cityName,jdbcType=VARCHAR}");
@@ -384,8 +385,8 @@ public class OfferCaseSqlProvider {
             sql.SET("Toward = #{toward,jdbcType=VARCHAR}");
         }
         
-        if (record.getBuildyear2() != null) {
-            sql.SET("BuildYear2 = #{buildyear2,jdbcType=VARCHAR}");
+        if (record.getBuildYear() != null) {
+            sql.SET("BuildYear = #{buildYear,jdbcType=VARCHAR}");
         }
         
         if (record.getArea() != null) {
@@ -412,12 +413,16 @@ public class OfferCaseSqlProvider {
             sql.SET("DataSource = #{dataSource,jdbcType=VARCHAR}");
         }
         
+        if (record.getCompanyId() != null) {
+            sql.SET("CompanyID = #{companyId,jdbcType=INTEGER}");
+        }
+        
         if (record.getCreateDateTime() != null) {
             sql.SET("CreateDateTime = #{createDateTime,jdbcType=TIMESTAMP}");
         }
         
-        if (record.getOperator() != null) {
-            sql.SET("Operator = #{operator,jdbcType=VARCHAR}");
+        if (record.getLastUpdateTime() != null) {
+            sql.SET("LastUpdateTime = #{lastUpdateTime,jdbcType=TIMESTAMP}");
         }
         
         if (record.getExtendCol() != null) {

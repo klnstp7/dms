@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class CommunityBaseDataHisCond {
+public class CommunityBaseDataHisCond extends BaseRowBound {
     protected String orderByClause;
 
     protected boolean distinct;

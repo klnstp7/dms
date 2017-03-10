@@ -7,7 +7,7 @@
 
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring-*.xml</param-value>
+    <param-value>classpath:spring*.xml</param-value>
   </context-param>
   <!--日志配置-->
   <context-param>
@@ -22,6 +22,24 @@
     <param-name>renew</param-name>
     <param-value>false</param-value>
   </context-param>
+
+  <!-- 设置字符集 -->
+  <filter>
+    <filter-name>characterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>characterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
   <!-- CAS 单点登录(SSO) 过滤器配置 (start) -->
 
@@ -56,7 +74,55 @@
   </filter>
   <filter-mapping>
     <filter-name>CASFilter</filter-name>
-    <url-pattern>/*</url-pattern>
+    <url-pattern>/baseData/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CASFilter</filter-name>
+    <url-pattern>/buildingBaseData/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CASFilter</filter-name>
+    <url-pattern>/communityBaseData/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CASFilter</filter-name>
+    <url-pattern>/upload/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CASFilter</filter-name>
+    <url-pattern>/extendConfig/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CASFilter</filter-name>
+    <url-pattern>/houseBaseData/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CASFilter</filter-name>
+    <url-pattern>/home/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CASFilter</filter-name>
+    <url-pattern>/inquiryData/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CASFilter</filter-name>
+    <url-pattern>/offerCase/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CASFilter</filter-name>
+    <url-pattern>/owndata/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CASFilter</filter-name>
+    <url-pattern>/reportCase/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CASFilter</filter-name>
+    <url-pattern>/transactionCase/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CASFilter</filter-name>
+    <url-pattern>/unitBaseData/*</url-pattern>
   </filter-mapping>
 
   <!-- 该过滤器负责对Ticket的校验工作，必须启用它 -->
@@ -84,7 +150,55 @@
   </filter>
   <filter-mapping>
     <filter-name>CAS Validation Filter</filter-name>
-    <url-pattern>/*</url-pattern>
+    <url-pattern>/baseData/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CAS Validation Filter</filter-name>
+    <url-pattern>/buildingBaseData/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CAS Validation Filter</filter-name>
+    <url-pattern>/communityBaseData/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CAS Validation Filter</filter-name>
+    <url-pattern>/upload/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CAS Validation Filter</filter-name>
+    <url-pattern>/extendConfig/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CAS Validation Filter</filter-name>
+    <url-pattern>/houseBaseData/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CAS Validation Filter</filter-name>
+    <url-pattern>/home/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CAS Validation Filter</filter-name>
+    <url-pattern>/inquiryData/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CAS Validation Filter</filter-name>
+    <url-pattern>/offerCase/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CAS Validation Filter</filter-name>
+    <url-pattern>/owndata/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CAS Validation Filter</filter-name>
+    <url-pattern>/reportCase/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CAS Validation Filter</filter-name>
+    <url-pattern>/transactionCase/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>CAS Validation Filter</filter-name>
+    <url-pattern>/unitBaseData/*</url-pattern>
   </filter-mapping>
 
   <!--
@@ -128,8 +242,6 @@
   </filter-mapping>
   <!-- CAS 单点登录(SSO) 过滤器配置 (end) -->
 
-
-
   <!-- Spring监听器 -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -146,7 +258,10 @@
   <listener>
     <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
   </listener>
-
+  <!--配置普通类中可以获取 HttpServlet对象-->
+  <listener>
+    <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+  </listener>
 
   <!-- Spring MVC servlet -->
   <servlet>
@@ -167,7 +282,5 @@
     <servlet-name>mvc-dispatcher</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-
-
 </web-app>
 

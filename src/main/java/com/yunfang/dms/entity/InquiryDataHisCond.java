@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class InquiryDataHisCond {
+public class InquiryDataHisCond extends BaseRowBound {
     protected String orderByClause;
 
     protected boolean distinct;

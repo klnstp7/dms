@@ -260,7 +260,7 @@ public interface InquiryDataMapper {
           "InquirySource = #{inquirySource,jdbcType=VARCHAR},",
           "Remark = #{remark,jdbcType=VARCHAR},",
           "CreateDateTime = #{createDateTime,jdbcType=TIMESTAMP},",
-          "LastUpdateTime = #{lastUpdateTime,jdbcType=TIMESTAMP}",
+          "LastUpdateTime = #{lastUpdateTime,jdbcType=TIMESTAMP},",
           "ExtendCol = #{extendCol,jdbcType=LONGVARCHAR}",
         "where ID = #{id,jdbcType=BIGINT}"
     })

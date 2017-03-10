@@ -42,7 +42,7 @@ public class TransactionCaseHis {
 
     private String remark;
 
-    private Date pricetime;
+    private Date priceTime;
 
     private Date createDateTime;
 
@@ -202,12 +202,12 @@ public class TransactionCaseHis {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public Date getPricetime() {
-        return pricetime;
+    public Date getPriceTime() {
+        return priceTime;
     }
 
-    public void setPricetime(Date pricetime) {
-        this.pricetime = pricetime;
+    public void setPriceTime(Date priceTime) {
+        this.priceTime = priceTime;
     }
 
     public Date getCreateDateTime() {

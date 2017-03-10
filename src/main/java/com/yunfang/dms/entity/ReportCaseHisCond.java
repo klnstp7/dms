@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ReportCaseHisCond {
+public class ReportCaseHisCond extends BaseRowBound {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -1106,73 +1106,73 @@ public class ReportCaseHisCond {
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2IsNull() {
-            addCriterion("BuildYear2 is null");
+        public Criteria andBuildYearIsNull() {
+            addCriterion("BuildYear is null");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2IsNotNull() {
-            addCriterion("BuildYear2 is not null");
+        public Criteria andBuildYearIsNotNull() {
+            addCriterion("BuildYear is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2EqualTo(String value) {
-            addCriterion("BuildYear2 =", value, "buildyear2");
+        public Criteria andBuildYearEqualTo(String value) {
+            addCriterion("BuildYear =", value, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2NotEqualTo(String value) {
-            addCriterion("BuildYear2 <>", value, "buildyear2");
+        public Criteria andBuildYearNotEqualTo(String value) {
+            addCriterion("BuildYear <>", value, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2GreaterThan(String value) {
-            addCriterion("BuildYear2 >", value, "buildyear2");
+        public Criteria andBuildYearGreaterThan(String value) {
+            addCriterion("BuildYear >", value, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2GreaterThanOrEqualTo(String value) {
-            addCriterion("BuildYear2 >=", value, "buildyear2");
+        public Criteria andBuildYearGreaterThanOrEqualTo(String value) {
+            addCriterion("BuildYear >=", value, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2LessThan(String value) {
-            addCriterion("BuildYear2 <", value, "buildyear2");
+        public Criteria andBuildYearLessThan(String value) {
+            addCriterion("BuildYear <", value, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2LessThanOrEqualTo(String value) {
-            addCriterion("BuildYear2 <=", value, "buildyear2");
+        public Criteria andBuildYearLessThanOrEqualTo(String value) {
+            addCriterion("BuildYear <=", value, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2Like(String value) {
-            addCriterion("BuildYear2 like", value, "buildyear2");
+        public Criteria andBuildYearLike(String value) {
+            addCriterion("BuildYear like", value, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2NotLike(String value) {
-            addCriterion("BuildYear2 not like", value, "buildyear2");
+        public Criteria andBuildYearNotLike(String value) {
+            addCriterion("BuildYear not like", value, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2In(List<String> values) {
-            addCriterion("BuildYear2 in", values, "buildyear2");
+        public Criteria andBuildYearIn(List<String> values) {
+            addCriterion("BuildYear in", values, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2NotIn(List<String> values) {
-            addCriterion("BuildYear2 not in", values, "buildyear2");
+        public Criteria andBuildYearNotIn(List<String> values) {
+            addCriterion("BuildYear not in", values, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2Between(String value1, String value2) {
-            addCriterion("BuildYear2 between", value1, value2, "buildyear2");
+        public Criteria andBuildYearBetween(String value1, String value2) {
+            addCriterion("BuildYear between", value1, value2, "buildYear");
             return (Criteria) this;
         }
 
-        public Criteria andBuildyear2NotBetween(String value1, String value2) {
-            addCriterion("BuildYear2 not between", value1, value2, "buildyear2");
+        public Criteria andBuildYearNotBetween(String value1, String value2) {
+            addCriterion("BuildYear not between", value1, value2, "buildYear");
             return (Criteria) this;
         }
 
@@ -1247,52 +1247,52 @@ public class ReportCaseHisCond {
         }
 
         public Criteria andTotalpriceEqualTo(BigDecimal value) {
-            addCriterion("TotalPrice =", value, "totalprice");
+            addCriterion("TotalPrice =", value, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceNotEqualTo(BigDecimal value) {
-            addCriterion("TotalPrice <>", value, "totalprice");
+            addCriterion("TotalPrice <>", value, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceGreaterThan(BigDecimal value) {
-            addCriterion("TotalPrice >", value, "totalprice");
+            addCriterion("TotalPrice >", value, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("TotalPrice >=", value, "totalprice");
+            addCriterion("TotalPrice >=", value, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceLessThan(BigDecimal value) {
-            addCriterion("TotalPrice <", value, "totalprice");
+            addCriterion("TotalPrice <", value, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("TotalPrice <=", value, "totalprice");
+            addCriterion("TotalPrice <=", value, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceIn(List<BigDecimal> values) {
-            addCriterion("TotalPrice in", values, "totalprice");
+            addCriterion("TotalPrice in", values, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceNotIn(List<BigDecimal> values) {
-            addCriterion("TotalPrice not in", values, "totalprice");
+            addCriterion("TotalPrice not in", values, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("TotalPrice between", value1, value2, "totalprice");
+            addCriterion("TotalPrice between", value1, value2, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("TotalPrice not between", value1, value2, "totalprice");
+            addCriterion("TotalPrice not between", value1, value2, "totalPrice");
             return (Criteria) this;
         }
 
@@ -1646,73 +1646,73 @@ public class ReportCaseHisCond {
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyIsNull() {
+        public Criteria andRoomPropertyIsNull() {
             addCriterion("RoomProperty is null");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyIsNotNull() {
+        public Criteria andRoomPropertyIsNotNull() {
             addCriterion("RoomProperty is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyEqualTo(String value) {
-            addCriterion("RoomProperty =", value, "roomProerty");
+        public Criteria andRoomPropertyEqualTo(String value) {
+            addCriterion("RoomProperty =", value, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyNotEqualTo(String value) {
-            addCriterion("RoomProperty <>", value, "roomProerty");
+        public Criteria andRoomPropertyNotEqualTo(String value) {
+            addCriterion("RoomProperty <>", value, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyGreaterThan(String value) {
-            addCriterion("RoomProperty >", value, "roomProerty");
+        public Criteria andRoomPropertyGreaterThan(String value) {
+            addCriterion("RoomProperty >", value, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyGreaterThanOrEqualTo(String value) {
-            addCriterion("RoomProperty >=", value, "roomProerty");
+        public Criteria andRoomPropertyGreaterThanOrEqualTo(String value) {
+            addCriterion("RoomProperty >=", value, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyLessThan(String value) {
-            addCriterion("RoomProperty <", value, "roomProerty");
+        public Criteria andRoomPropertyLessThan(String value) {
+            addCriterion("RoomProperty <", value, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyLessThanOrEqualTo(String value) {
-            addCriterion("RoomProperty <=", value, "roomProerty");
+        public Criteria andRoomPropertyLessThanOrEqualTo(String value) {
+            addCriterion("RoomProperty <=", value, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyLike(String value) {
-            addCriterion("RoomProperty like", value, "roomProerty");
+        public Criteria andRoomPropertyLike(String value) {
+            addCriterion("RoomProperty like", value, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyNotLike(String value) {
-            addCriterion("RoomProperty not like", value, "roomProerty");
+        public Criteria andRoomPropertyNotLike(String value) {
+            addCriterion("RoomProperty not like", value, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyIn(List<String> values) {
-            addCriterion("RoomProperty in", values, "roomProerty");
+        public Criteria andRoomPropertyIn(List<String> values) {
+            addCriterion("RoomProperty in", values, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyNotIn(List<String> values) {
-            addCriterion("RoomProperty not in", values, "roomProerty");
+        public Criteria andRoomPropertyNotIn(List<String> values) {
+            addCriterion("RoomProperty not in", values, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyBetween(String value1, String value2) {
-            addCriterion("RoomProperty between", value1, value2, "roomProerty");
+        public Criteria andRoomPropertyBetween(String value1, String value2) {
+            addCriterion("RoomProperty between", value1, value2, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyNotBetween(String value1, String value2) {
-            addCriterion("RoomProperty not between", value1, value2, "roomProerty");
+        public Criteria andRoomPropertyNotBetween(String value1, String value2) {
+            addCriterion("RoomProperty not between", value1, value2, "roomProperty");
             return (Criteria) this;
         }
 

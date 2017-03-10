@@ -56,6 +56,18 @@ public class ExtendConfigDto {
             case 3:
                 this.sourceTable= SourceTableEmum.ReportCase;
                 break;
+            case 4:
+                this.sourceTable= SourceTableEmum.CommunityBaseData;
+                break;
+            case 5:
+                this.sourceTable= SourceTableEmum.BuildingBaseData;
+                break;
+            case 6:
+                this.sourceTable= SourceTableEmum.UnitBaseData;
+                break;
+            case 7:
+                this.sourceTable= SourceTableEmum.HouseBaseData;
+                break;
             default:
                 this.sourceTable= SourceTableEmum.InquiryData;
         }

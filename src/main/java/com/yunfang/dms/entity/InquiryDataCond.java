@@ -281,7 +281,7 @@ public class InquiryDataCond extends BaseRowBound {
         }
 
         public Criteria andDistrictLike(String value) {
-            addCriterion("District like", value, "district");
+            addCriterion("District like", "%"+value+"%", "district");
             return (Criteria) this;
         }
 
@@ -351,7 +351,7 @@ public class InquiryDataCond extends BaseRowBound {
         }
 
         public Criteria andRegionLike(String value) {
-            addCriterion("Region like", value, "region");
+            addCriterion("Region like", "%"+value+"%", "region");
             return (Criteria) this;
         }
 
@@ -421,7 +421,7 @@ public class InquiryDataCond extends BaseRowBound {
         }
 
         public Criteria andCommunityLike(String value) {
-            addCriterion("Community like", value, "community");
+            addCriterion("Community like", "%"+value+"%", "community");
             return (Criteria) this;
         }
 
@@ -491,7 +491,7 @@ public class InquiryDataCond extends BaseRowBound {
         }
 
         public Criteria andAddressLike(String value) {
-            addCriterion("Address like", value, "address");
+            addCriterion("Address like", "%"+value+"%", "address");
             return (Criteria) this;
         }
 

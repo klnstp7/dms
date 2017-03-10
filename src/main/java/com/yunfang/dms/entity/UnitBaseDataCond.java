@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class UnitBaseDataCond {
+public class UnitBaseDataCond extends BaseRowBound {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -276,7 +276,7 @@ public class UnitBaseDataCond {
         }
 
         public Criteria andDistrictLike(String value) {
-            addCriterion("District like", value, "district");
+            addCriterion("District like", "%"+value+"%", "district");
             return (Criteria) this;
         }
 
@@ -346,7 +346,7 @@ public class UnitBaseDataCond {
         }
 
         public Criteria andRegionLike(String value) {
-            addCriterion("Region like", value, "region");
+            addCriterion("Region like", "%"+value+"%", "region");
             return (Criteria) this;
         }
 
@@ -416,7 +416,7 @@ public class UnitBaseDataCond {
         }
 
         public Criteria andCommunityLike(String value) {
-            addCriterion("Community like", value, "community");
+            addCriterion("Community like", "%"+value+"%", "community");
             return (Criteria) this;
         }
 

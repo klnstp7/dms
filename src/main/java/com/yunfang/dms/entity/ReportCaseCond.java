@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ReportCaseCond {
+public class ReportCaseCond extends BaseRowBound{
     protected String orderByClause;
 
     protected boolean distinct;
@@ -277,7 +277,7 @@ public class ReportCaseCond {
         }
 
         public Criteria andDistrictLike(String value) {
-            addCriterion("District like", value, "district");
+            addCriterion("District like", "%"+value+"%", "district");
             return (Criteria) this;
         }
 
@@ -347,7 +347,7 @@ public class ReportCaseCond {
         }
 
         public Criteria andRegionLike(String value) {
-            addCriterion("Region like", value, "region");
+            addCriterion("Region like", "%"+value+"%", "region");
             return (Criteria) this;
         }
 
@@ -547,7 +547,7 @@ public class ReportCaseCond {
         }
 
         public Criteria andCommunityLike(String value) {
-            addCriterion("Community like", value, "community");
+            addCriterion("Community like", "%"+value+"%", "community");
             return (Criteria) this;
         }
 
@@ -617,7 +617,7 @@ public class ReportCaseCond {
         }
 
         public Criteria andAddressLike(String value) {
-            addCriterion("Address like", value, "address");
+            addCriterion("Address like", "%"+value+"%", "address");
             return (Criteria) this;
         }
 
@@ -1187,52 +1187,52 @@ public class ReportCaseCond {
         }
 
         public Criteria andTotalpriceEqualTo(BigDecimal value) {
-            addCriterion("TotalPrice =", value, "totalprice");
+            addCriterion("TotalPrice =", value, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceNotEqualTo(BigDecimal value) {
-            addCriterion("TotalPrice <>", value, "totalprice");
+            addCriterion("TotalPrice <>", value, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceGreaterThan(BigDecimal value) {
-            addCriterion("TotalPrice >", value, "totalprice");
+            addCriterion("TotalPrice >", value, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("TotalPrice >=", value, "totalprice");
+            addCriterion("TotalPrice >=", value, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceLessThan(BigDecimal value) {
-            addCriterion("TotalPrice <", value, "totalprice");
+            addCriterion("TotalPrice <", value, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("TotalPrice <=", value, "totalprice");
+            addCriterion("TotalPrice <=", value, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceIn(List<BigDecimal> values) {
-            addCriterion("TotalPrice in", values, "totalprice");
+            addCriterion("TotalPrice in", values, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceNotIn(List<BigDecimal> values) {
-            addCriterion("TotalPrice not in", values, "totalprice");
+            addCriterion("TotalPrice not in", values, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("TotalPrice between", value1, value2, "totalprice");
+            addCriterion("TotalPrice between", value1, value2, "totalPrice");
             return (Criteria) this;
         }
 
         public Criteria andTotalpriceNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("TotalPrice not between", value1, value2, "totalprice");
+            addCriterion("TotalPrice not between", value1, value2, "totalPrice");
             return (Criteria) this;
         }
 
@@ -1586,73 +1586,73 @@ public class ReportCaseCond {
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyIsNull() {
+        public Criteria andRoomPropertyIsNull() {
             addCriterion("RoomProperty is null");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyIsNotNull() {
+        public Criteria andRoomPropertyIsNotNull() {
             addCriterion("RoomProperty is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyEqualTo(String value) {
-            addCriterion("RoomProperty =", value, "roomProerty");
+        public Criteria andRoomPropertyEqualTo(String value) {
+            addCriterion("RoomProperty =", value, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyNotEqualTo(String value) {
-            addCriterion("RoomProperty <>", value, "roomProerty");
+        public Criteria andRoomPropertyNotEqualTo(String value) {
+            addCriterion("RoomProperty <>", value, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyGreaterThan(String value) {
-            addCriterion("RoomProperty >", value, "roomProerty");
+        public Criteria andRoomPropertyGreaterThan(String value) {
+            addCriterion("RoomProperty >", value, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyGreaterThanOrEqualTo(String value) {
-            addCriterion("RoomProperty >=", value, "roomProerty");
+        public Criteria andRoomPropertyGreaterThanOrEqualTo(String value) {
+            addCriterion("RoomProperty >=", value, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyLessThan(String value) {
-            addCriterion("RoomProperty <", value, "roomProerty");
+        public Criteria andRoomPropertyLessThan(String value) {
+            addCriterion("RoomProperty <", value, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyLessThanOrEqualTo(String value) {
-            addCriterion("RoomProperty <=", value, "roomProerty");
+        public Criteria andRoomPropertyLessThanOrEqualTo(String value) {
+            addCriterion("RoomProperty <=", value, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyLike(String value) {
-            addCriterion("RoomProperty like", value, "roomProerty");
+        public Criteria andRoomPropertyLike(String value) {
+            addCriterion("RoomProperty like", value, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyNotLike(String value) {
-            addCriterion("RoomProperty not like", value, "roomProerty");
+        public Criteria andRoomPropertyNotLike(String value) {
+            addCriterion("RoomProperty not like", value, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyIn(List<String> values) {
-            addCriterion("RoomProperty in", values, "roomProerty");
+        public Criteria andRoomPropertyIn(List<String> values) {
+            addCriterion("RoomProperty in", values, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyNotIn(List<String> values) {
-            addCriterion("RoomProperty not in", values, "roomProerty");
+        public Criteria andRoomPropertyNotIn(List<String> values) {
+            addCriterion("RoomProperty not in", values, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyBetween(String value1, String value2) {
-            addCriterion("RoomProperty between", value1, value2, "roomProerty");
+        public Criteria andRoomPropertyBetween(String value1, String value2) {
+            addCriterion("RoomProperty between", value1, value2, "roomProperty");
             return (Criteria) this;
         }
 
-        public Criteria andRoomProertyNotBetween(String value1, String value2) {
-            addCriterion("RoomProperty not between", value1, value2, "roomProerty");
+        public Criteria andRoomPropertyNotBetween(String value1, String value2) {
+            addCriterion("RoomProperty not between", value1, value2, "roomProperty");
             return (Criteria) this;
         }
 

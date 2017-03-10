@@ -10,11 +10,11 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>自建数据库</title>
+    <title>自建数据</title>
     <meta name="Keywords" content="" />
     <meta name="Description" content="" />
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-    <meta content="no-cache" http-equiv="pragma" />
+    <meta http-equiv="pragma" content="no-cache" />
     <meta content="0" http-equiv="expires" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
@@ -28,13 +28,14 @@
     <link href="../../resources/css/font-awesome-ie7.min.css" rel="stylesheet"  type="text/css" >
     <![endif]-->
     <link href="../../resources/lib/jquery-dataTable/css/jquery.dataTables.min.css"  rel="stylesheet" type="text/css" />
+    <link href="../../resources/lib/jquery-dataTable-fixedColumns/fixedColumns.dataTables.min.css"  rel="stylesheet" type="text/css" />
+    <link href="../../resources/lib/jquery-dataTable-Select/css/select.dataTables.min.css"  rel="stylesheet" type="text/css" />
     <link href="../../resources/css/index.css" rel="stylesheet" type="text/css" />
 </head>
-
 <body>
 <div class="p-10">
     <ul class="f-cf nav-tab " id="nav-tab">
-        <li class="f-fl first current" data-links="/inquiry/index">
+        <li class="f-fl first current" data-links="/inquiryData/index">
             <div class="wrap">
                 <p class="f-cf nav-tab-wrap">
                         <span class="f-fr">
@@ -46,7 +47,7 @@
                 </p>
             </div>
         </li>
-        <li class="f-fl second" data-links="/home/ownDataTransaction">
+        <li class="f-fl second" data-links="/transactionCase/index">
             <div class="wrap">
                 <p class="f-cf nav-tab-wrap">
                         <span class="f-fr">
@@ -58,7 +59,7 @@
                 </p>
             </div>
         </li>
-        <li class="f-fl three" data-links="/home/ownDataOffer">
+        <li class="f-fl three" data-links="/offerCase/index">
             <div class="wrap">
                 <p class="f-cf nav-tab-wrap">
                         <span class="f-fr">
@@ -70,7 +71,7 @@
                 </p>
             </div>
         </li>
-        <li class="f-fl four" data-links="/home/ownDataReport">
+        <li class="f-fl four" data-links="/reportCase/index">
             <div class="wrap">
                 <p class="f-cf nav-tab-wrap">
                         <span class="f-fr">
@@ -96,26 +97,36 @@
     <div id="mainWrap">
 
     </div>
+    <iframe id="mainWrapFrame" style="display: none;width: 100%"  src="/owndata/ownDataUpdate"></iframe>
 </div>
-
 <script type="text/javascript" src="../../resources/lib/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="../../resources/lib/layer/layer.js"></script>
 <script type="text/javascript" src="../../resources/lib/jquery-dataTable/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="../../resources/lib/jquery-dataTable-fixedColumns/dataTables.fixedColumns.min.js"></script>
+<script type="text/javascript" src="../../resources/lib/jquery-dataTable-Select/js/dataTables.select.min.js"></script>
+<script type="text/javascript" src="../../resources/lib/jquery-placeholder/jquery.placeholder.js"></script>
+<script type="text/javascript" src="../../resources/lib/help/help.js"></script>
 <script type="text/javascript">
     var _loading,_table;
     $(function () {
-        loadingHtml("/inquiry/index",function(_result){
+        $.fn.dataTable.ext.errMode = 'none';
+        loadingHtml('/inquiryData/index',function(_result){
             $("#mainWrap").html("").html(_result);
-        })
-
+        });
         $("#nav-tab li").click(function () {
             $(this).addClass("current").siblings("li").removeClass("current");
             var _url = $(this).attr("data-links");
-            loadingHtml(_url,function(_result){
-                $("#mainWrap").html("").html(_result);
-            })
+            if($(this).index()==4){
+                $("#mainWrap").html("");
+                $("#mainWrapFrame").css({"height":$(window).height()-$("#nav-tab").height()-30}).show();
+            }else{
+                loadingHtml(_url,function(_result){
+                    $("#mainWrap").html("").html(_result);
+                    $("#mainWrapFrame").hide();
+                });
+            }
         });
-    })
+    });
 
     function loadingHtml(url,fn) {
         _loading = layer.load(2);
@@ -135,14 +146,6 @@
                 });
             }
         });
-    }
-
-    function stopBubble(e) {
-        if ( e && e.stopPropagation ) {
-            e.stopPropagation();
-        } else {
-            window.event.cancelBubble = true;
-        }
     }
 </script>
 </body>

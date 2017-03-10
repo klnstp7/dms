@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_dms" default="compile.module.dms">
+  <dirname property="module.dms.basedir" file="${ant.file.module_dms}"/>
+  
+  <property name="module.jdk.home.dms" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.dms" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.dms" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.dms" value="-encoding UTF-8 -source 1.6 -target 1.6 ${compiler.args}"/>
+  
+  <property name="dms.output.dir" value="${module.dms.basedir}/target/classes"/>
+  <property name="dms.testoutput.dir" value="${module.dms.basedir}/target/test-classes"/>
+  
+  <path id="dms.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="dms.module.production.classpath">
+    <path refid="${module.jdk.classpath.dms}"/>
+    <pathelement location="F:/ant-1.6.5.jar"/>
+    <pathelement location="F:/junrar-0.7.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/commons-codec-1.10.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/commons-logging-1.2.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/curvesapi-1.03.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/junit-4.12.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/log4j-1.2.17.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-examples-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-excelant-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-ooxml-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-ooxml-schemas-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-scratchpad-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/xmlbeans-2.6.0.jar"/>
+    <pathelement location="F:/dmslib/dom4j-1.6.1.jar"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.0.2.release.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.3.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-oxm:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.0.2.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context-support:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis:3.2.6.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis-spring:1.2.2.classpath"/>
+    <path refid="library.maven:_javax:javaee-api:7.0.classpath"/>
+    <path refid="library.maven:_com.sun.mail:javax.mail:1.5.0.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.30.classpath"/>
+    <path refid="library.maven:_commons-dbcp:commons-dbcp:1.2.2.classpath"/>
+    <path refid="library.maven:_commons-pool:commons-pool:1.3.classpath"/>
+    <path refid="library.maven:_jstl:jstl:1.2.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.alibaba:fastjson:1.1.41.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.7.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_commons-fileupload:commons-fileupload:1.3.1.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.9.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.7.3.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.7.3.classpath"/>
+    <path refid="library.maven:_org.freemarker:freemarker:2.3.22.classpath"/>
+    <path refid="library.maven:_org.modelmapper:modelmapper:0.7.3.classpath"/>
+    <path refid="library.maven:_com.google.code.gson:gson:2.3.1.classpath"/>
+    <path refid="library.maven:_org.jasig.cas.client:cas-client-core:3.3.3.classpath"/>
+    <path refid="library.maven:_org.opensaml:opensaml:2.5.1-1.classpath"/>
+    <path refid="library.maven:_org.opensaml:openws:1.4.2-1.classpath"/>
+    <path refid="library.maven:_org.opensaml:xmltooling:1.3.2-1.classpath"/>
+    <path refid="library.maven:_org.slf4j:log4j-over-slf4j:1.6.1.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.6.1.classpath"/>
+    <path refid="library.maven:_joda-time:joda-time:1.6.2.classpath"/>
+    <path refid="library.maven:_org.bouncycastle:bcprov-jdk15:1.45.classpath"/>
+    <path refid="library.maven:_org.apache.santuario:xmlsec:1.4.4.classpath"/>
+    <path refid="library.maven:_ca.juliusdavies:not-yet-commons-ssl:0.3.9.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_commons-httpclient:commons-httpclient:3.1.classpath"/>
+    <path refid="library.maven:_velocity:velocity:1.5.classpath"/>
+    <path refid="library.maven:_org.owasp.esapi:esapi:2.0ga.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.5.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.4.3.classpath"/>
+    <path refid="library.maven:_net.sf.json-lib:json-lib:jdk15:2.4.classpath"/>
+    <path refid="library.maven:_commons-beanutils:commons-beanutils:1.8.0.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.5.classpath"/>
+    <path refid="library.maven:_net.sf.ezmorph:ezmorph:1.0.6.classpath"/>
+  </path>
+  
+  <path id="dms.runtime.production.module.classpath">
+    <pathelement location="${dms.output.dir}"/>
+    <pathelement location="F:/ant-1.6.5.jar"/>
+    <pathelement location="F:/junrar-0.7.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/commons-codec-1.10.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/commons-logging-1.2.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/curvesapi-1.03.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/junit-4.12.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/log4j-1.2.17.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-examples-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-excelant-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-ooxml-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-ooxml-schemas-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-scratchpad-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/xmlbeans-2.6.0.jar"/>
+    <pathelement location="F:/dmslib/dom4j-1.6.1.jar"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.0.2.release.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.3.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-oxm:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.0.2.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context-support:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis:3.2.6.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis-spring:1.2.2.classpath"/>
+    <path refid="library.maven:_javax:javaee-api:7.0.classpath"/>
+    <path refid="library.maven:_com.sun.mail:javax.mail:1.5.0.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.30.classpath"/>
+    <path refid="library.maven:_commons-dbcp:commons-dbcp:1.2.2.classpath"/>
+    <path refid="library.maven:_commons-pool:commons-pool:1.3.classpath"/>
+    <path refid="library.maven:_jstl:jstl:1.2.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.alibaba:fastjson:1.1.41.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.7.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_commons-fileupload:commons-fileupload:1.3.1.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.9.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.7.3.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.7.3.classpath"/>
+    <path refid="library.maven:_org.freemarker:freemarker:2.3.22.classpath"/>
+    <path refid="library.maven:_org.modelmapper:modelmapper:0.7.3.classpath"/>
+    <path refid="library.maven:_com.google.code.gson:gson:2.3.1.classpath"/>
+    <path refid="library.maven:_org.jasig.cas.client:cas-client-core:3.3.3.classpath"/>
+    <path refid="library.maven:_org.opensaml:opensaml:2.5.1-1.classpath"/>
+    <path refid="library.maven:_org.opensaml:openws:1.4.2-1.classpath"/>
+    <path refid="library.maven:_org.opensaml:xmltooling:1.3.2-1.classpath"/>
+    <path refid="library.maven:_org.slf4j:log4j-over-slf4j:1.6.1.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.6.1.classpath"/>
+    <path refid="library.maven:_joda-time:joda-time:1.6.2.classpath"/>
+    <path refid="library.maven:_org.bouncycastle:bcprov-jdk15:1.45.classpath"/>
+    <path refid="library.maven:_org.apache.santuario:xmlsec:1.4.4.classpath"/>
+    <path refid="library.maven:_ca.juliusdavies:not-yet-commons-ssl:0.3.9.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_commons-httpclient:commons-httpclient:3.1.classpath"/>
+    <path refid="library.maven:_velocity:velocity:1.5.classpath"/>
+    <path refid="library.maven:_org.owasp.esapi:esapi:2.0ga.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.4.01.classpath"/>
+    <path refid="library.maven:_xerces:xercesimpl:2.10.0.classpath"/>
+    <path refid="library.maven:_xml-resolver:xml-resolver:1.2.classpath"/>
+    <path refid="library.maven:_xalan:xalan:2.7.1.classpath"/>
+    <path refid="library.maven:_xalan:serializer:2.7.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.5.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.4.3.classpath"/>
+    <path refid="library.maven:_net.sf.json-lib:json-lib:jdk15:2.4.classpath"/>
+    <path refid="library.maven:_commons-beanutils:commons-beanutils:1.8.0.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.5.classpath"/>
+    <path refid="library.maven:_net.sf.ezmorph:ezmorph:1.0.6.classpath"/>
+  </path>
+  
+  <path id="dms.module.classpath">
+    <path refid="${module.jdk.classpath.dms}"/>
+    <pathelement location="${dms.output.dir}"/>
+    <pathelement location="F:/ant-1.6.5.jar"/>
+    <pathelement location="F:/junrar-0.7.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/commons-codec-1.10.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/commons-logging-1.2.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/curvesapi-1.03.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/junit-4.12.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/log4j-1.2.17.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-examples-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-excelant-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-ooxml-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-ooxml-schemas-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-scratchpad-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/xmlbeans-2.6.0.jar"/>
+    <pathelement location="F:/dmslib/dom4j-1.6.1.jar"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.0.2.release.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.3.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-oxm:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.0.2.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context-support:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis:3.2.6.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis-spring:1.2.2.classpath"/>
+    <path refid="library.maven:_javax:javaee-api:7.0.classpath"/>
+    <path refid="library.maven:_com.sun.mail:javax.mail:1.5.0.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.30.classpath"/>
+    <path refid="library.maven:_commons-dbcp:commons-dbcp:1.2.2.classpath"/>
+    <path refid="library.maven:_commons-pool:commons-pool:1.3.classpath"/>
+    <path refid="library.maven:_jstl:jstl:1.2.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.alibaba:fastjson:1.1.41.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.7.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_commons-fileupload:commons-fileupload:1.3.1.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.9.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.7.3.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.7.3.classpath"/>
+    <path refid="library.maven:_org.freemarker:freemarker:2.3.22.classpath"/>
+    <path refid="library.maven:_org.modelmapper:modelmapper:0.7.3.classpath"/>
+    <path refid="library.maven:_com.google.code.gson:gson:2.3.1.classpath"/>
+    <path refid="library.maven:_org.jasig.cas.client:cas-client-core:3.3.3.classpath"/>
+    <path refid="library.maven:_org.opensaml:opensaml:2.5.1-1.classpath"/>
+    <path refid="library.maven:_org.opensaml:openws:1.4.2-1.classpath"/>
+    <path refid="library.maven:_org.opensaml:xmltooling:1.3.2-1.classpath"/>
+    <path refid="library.maven:_org.slf4j:log4j-over-slf4j:1.6.1.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.6.1.classpath"/>
+    <path refid="library.maven:_joda-time:joda-time:1.6.2.classpath"/>
+    <path refid="library.maven:_org.bouncycastle:bcprov-jdk15:1.45.classpath"/>
+    <path refid="library.maven:_org.apache.santuario:xmlsec:1.4.4.classpath"/>
+    <path refid="library.maven:_ca.juliusdavies:not-yet-commons-ssl:0.3.9.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_commons-httpclient:commons-httpclient:3.1.classpath"/>
+    <path refid="library.maven:_velocity:velocity:1.5.classpath"/>
+    <path refid="library.maven:_org.owasp.esapi:esapi:2.0ga.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.4.01.classpath"/>
+    <path refid="library.maven:_xerces:xercesimpl:2.10.0.classpath"/>
+    <path refid="library.maven:_xml-resolver:xml-resolver:1.2.classpath"/>
+    <path refid="library.maven:_xalan:xalan:2.7.1.classpath"/>
+    <path refid="library.maven:_xalan:serializer:2.7.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.5.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.4.3.classpath"/>
+    <path refid="library.maven:_net.sf.json-lib:json-lib:jdk15:2.4.classpath"/>
+    <path refid="library.maven:_commons-beanutils:commons-beanutils:1.8.0.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.5.classpath"/>
+    <path refid="library.maven:_net.sf.ezmorph:ezmorph:1.0.6.classpath"/>
+  </path>
+  
+  <path id="dms.runtime.module.classpath">
+    <pathelement location="${dms.testoutput.dir}"/>
+    <pathelement location="${dms.output.dir}"/>
+    <pathelement location="F:/ant-1.6.5.jar"/>
+    <pathelement location="F:/junrar-0.7.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/commons-codec-1.10.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/commons-logging-1.2.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/curvesapi-1.03.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/junit-4.12.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/log4j-1.2.17.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-examples-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-excelant-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-ooxml-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-ooxml-schemas-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/poi-scratchpad-3.15-beta1.jar"/>
+    <pathelement location="F:/dmslib/poi-3.15/xmlbeans-2.6.0.jar"/>
+    <pathelement location="F:/dmslib/dom4j-1.6.1.jar"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.0.2.release.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.3.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-oxm:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.0.2.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context-support:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:4.0.2.release.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis:3.2.6.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis-spring:1.2.2.classpath"/>
+    <path refid="library.maven:_javax:javaee-api:7.0.classpath"/>
+    <path refid="library.maven:_com.sun.mail:javax.mail:1.5.0.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.30.classpath"/>
+    <path refid="library.maven:_commons-dbcp:commons-dbcp:1.2.2.classpath"/>
+    <path refid="library.maven:_commons-pool:commons-pool:1.3.classpath"/>
+    <path refid="library.maven:_jstl:jstl:1.2.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.alibaba:fastjson:1.1.41.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.7.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_commons-fileupload:commons-fileupload:1.3.1.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.9.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.7.3.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.7.3.classpath"/>
+    <path refid="library.maven:_org.freemarker:freemarker:2.3.22.classpath"/>
+    <path refid="library.maven:_org.modelmapper:modelmapper:0.7.3.classpath"/>
+    <path refid="library.maven:_com.google.code.gson:gson:2.3.1.classpath"/>
+    <path refid="library.maven:_org.jasig.cas.client:cas-client-core:3.3.3.classpath"/>
+    <path refid="library.maven:_org.opensaml:opensaml:2.5.1-1.classpath"/>
+    <path refid="library.maven:_org.opensaml:openws:1.4.2-1.classpath"/>
+    <path refid="library.maven:_org.opensaml:xmltooling:1.3.2-1.classpath"/>
+    <path refid="library.maven:_org.slf4j:log4j-over-slf4j:1.6.1.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.6.1.classpath"/>
+    <path refid="library.maven:_joda-time:joda-time:1.6.2.classpath"/>
+    <path refid="library.maven:_org.bouncycastle:bcprov-jdk15:1.45.classpath"/>
+    <path refid="library.maven:_org.apache.santuario:xmlsec:1.4.4.classpath"/>
+    <path refid="library.maven:_ca.juliusdavies:not-yet-commons-ssl:0.3.9.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_commons-httpclient:commons-httpclient:3.1.classpath"/>
+    <path refid="library.maven:_velocity:velocity:1.5.classpath"/>
+    <path refid="library.maven:_org.owasp.esapi:esapi:2.0ga.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.4.01.classpath"/>
+    <path refid="library.maven:_xerces:xercesimpl:2.10.0.classpath"/>
+    <path refid="library.maven:_xml-resolver:xml-resolver:1.2.classpath"/>
+    <path refid="library.maven:_xalan:xalan:2.7.1.classpath"/>
+    <path refid="library.maven:_xalan:serializer:2.7.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.5.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.4.3.classpath"/>
+    <path refid="library.maven:_net.sf.json-lib:json-lib:jdk15:2.4.classpath"/>
+    <path refid="library.maven:_commons-beanutils:commons-beanutils:1.8.0.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.5.classpath"/>
+    <path refid="library.maven:_net.sf.ezmorph:ezmorph:1.0.6.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.dms">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.dms">
+    <patternset refid="excluded.from.module.dms"/>
+  </patternset>
+  
+  <path id="dms.module.sourcepath">
+    <dirset dir="${module.dms.basedir}">
+      <include name="src/main/resources"/>
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  <path id="dms.module.test.sourcepath">
+    <dirset dir="${module.dms.basedir}">
+      <include name="src/main/test"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.dms" depends="compile.module.dms.production,compile.module.dms.tests" description="Compile module DMS"/>
+  
+  <target name="compile.module.dms.production" depends="register.custom.compilers" description="Compile module DMS; production classes">
+    <mkdir dir="${dms.output.dir}"/>
+    <javac2 destdir="${dms.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.dms}/javac">
+      <compilerarg line="${compiler.args.dms}"/>
+      <bootclasspath refid="dms.module.bootclasspath"/>
+      <classpath refid="dms.module.production.classpath"/>
+      <src refid="dms.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.dms"/>
+    </javac2>
+    
+    <copy todir="${dms.output.dir}">
+      <fileset dir="${module.dms.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.dms.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.dms.tests" depends="register.custom.compilers,compile.module.dms.production" description="compile module DMS; test classes" unless="skip.tests">
+    <mkdir dir="${dms.testoutput.dir}"/>
+    <javac2 destdir="${dms.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.dms}/javac">
+      <compilerarg line="${compiler.args.dms}"/>
+      <bootclasspath refid="dms.module.bootclasspath"/>
+      <classpath refid="dms.module.classpath"/>
+      <src refid="dms.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.dms"/>
+    </javac2>
+    
+    <copy todir="${dms.testoutput.dir}">
+      <fileset dir="${module.dms.basedir}/src/main/test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.dms" description="cleanup module">
+    <delete dir="${dms.output.dir}"/>
+    <delete dir="${dms.testoutput.dir}"/>
+  </target>
+</project>

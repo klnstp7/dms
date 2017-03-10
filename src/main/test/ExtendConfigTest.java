@@ -1,7 +1,10 @@
 import com.yunfang.dms.dto.ExtendConfigDto;
 import com.yunfang.dms.entity.ExtendConfigCond;
+import com.yunfang.dms.exception.CustomException;
 import com.yunfang.dms.service.inter.IExtendConfigService;
 import com.yunfang.dms.enums.SourceTableEmum;
+import com.yunfang.dms.utils.ExcelUtil;
+import org.apache.poi.ss.formula.functions.T;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,35 +32,27 @@ public class ExtendConfigTest {
         dto.setColumnName("天台");
         dto.setCreateDateTime(new Date());
         dto.setOperator("lthui");
-        Boolean result = buildingService.insert(dto);
-        Assert.assertTrue(result);
-    }
-
-    @Test
-    public void updateTest(){
-        Long id=new Long(1);
-        ExtendConfigDto dto = buildingService.get(id);
-        if(dto==null){
-            dto= buildingService.get(id++);
+        try{
+            Boolean result = buildingService.insert(dto);
+            Assert.assertTrue(result);
         }
-        dto.setCompanyId(1);
-        dto.setSourceTable(SourceTableEmum.InquiryData);
-        dto.setColumnName("更新测试");
-        dto.setCreateDateTime(new Date());
-        dto.setOperator("lthui");
-
-        Boolean result = buildingService.update(dto);
-        Assert.assertTrue(result);
+        catch (CustomException ex){
+            Assert.assertTrue(false);
+        }
     }
 
     @Test
     public void deleteTest(){
         Long id=new Long(1);
-        Boolean result = buildingService.delete(id);
-        if(!result){
-            result= buildingService.delete(id++);
+        try{
+            Boolean result = buildingService.delete(id,1);
+            if(!result){
+                result= buildingService.delete(id++,1);
+            }
+            Assert.assertTrue(result);}
+        catch (CustomException ex){
+            Assert.assertTrue(false);
         }
-        Assert.assertTrue(result);
     }
 
     @Test

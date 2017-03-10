@@ -11,5 +11,13 @@ public enum SourceTableEmum {
     //成交案例
     TransactionCase,
     //报告案例
-    ReportCase
+    ReportCase,
+    //小区基础数据
+    CommunityBaseData,
+    //楼幢基础数据
+    BuildingBaseData,
+    //单元基础数据
+    UnitBaseData,
+    //户基础数据
+    HouseBaseData
 }

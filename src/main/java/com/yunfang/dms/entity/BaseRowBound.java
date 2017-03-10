@@ -5,23 +5,23 @@ package com.yunfang.dms.entity;
  */
 public class BaseRowBound {
 
-    protected long limit;
+    private int limit;
 
-    protected long start;
+    private int start;
 
-    public long getLimit() {
+    public int getLimit() {
         return limit;
     }
 
-    public void setLimit(long limit) {
+    public void setLimit(int limit) {
         this.limit = limit;
     }
 
-    public long getStart() {
+    public int getStart() {
         return start;
     }
 
-    public void setStart(long start) {
+    public void setStart(int start) {
         this.start = start;
     }
 

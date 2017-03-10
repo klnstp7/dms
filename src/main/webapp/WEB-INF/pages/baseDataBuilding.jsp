@@ -8,7 +8,10 @@
       <!--  <a href="javascript:void(0);" id="addCase"><i class="fa fa-plus-circle"></i>&nbsp;新增案例</a> -->
         <a href="javascript:void(0);" id="allSelect"><i class="fa fa-navicon"></i>&nbsp;全选</a>
         <a href="javascript:void(0);" id="rowDown"><i class="fa fa-arrow-circle-down"></i>&nbsp;批量下载</a>
-         <a href="javascript:void(0);" id="rowDele"><i class="fa fa-times-circle"></i>&nbsp;批量删除</a>
+        <a href="javascript:void(0);" id="rowDele"><i class="fa fa-times-circle"></i>&nbsp;批量删除</a>
+        <input type="file" name="file" id="attachUpload" />
+        <a href="javascript:void(0);" >导入模版下载</a>
+        <a href="javascript:void(0);" >如何自定义模板？</a>
     </span>
 </div>
 <table id="example" class="display compact" cellspacing="0" width="100%">
@@ -77,10 +80,6 @@ $(function() {
             [10, 25, 50, "所有"]
         ],
         "data": dataSet,
-        "fnInitComplete": function(oSettings, json) {
-            var _obj = oSettings.aoData[0]._aData;
-            editList(_obj);
-        },
         "columns": [{
             data: "InquiryTime"
         }, {
@@ -160,62 +159,39 @@ $(function() {
             $('#example tbody tr').toggleClass('selected');
         }
     });
-});
+    $("#attachUpload").uploadify({
+        'swf': '../../resources/lib/uploadify/uploadify.swf',
+        //'uploader': '/Project/UploadAttachment?projectId=' + projectId,
+        'overrideEvents': ['onDialogClose', 'onSelectError'],
+        'removeCompleted': true,
+        'onSelect': function() {
 
-
-function editList(obj) {
-    _dttable = $('#tb').DataTable({
-        "language": {
-            "url": "../../resources/lib/jquery-dataTable/js/Chinese.json"
         },
-        "dom": '<"toolbar">frtip',
-        "bRetrieve": true,
-        "processing": true,
-        "searching": false,
-        "sPaginationType": "full_numbers",
-        "ordering": false,
-        "iScrollLoadGap": 10,
-        "aLengthMenu": [
-            [10, 25, 50, -1],
-            [10, 25, 50, "所有"]
-        ],
-        "data": dataSet,
-        "columns": [{
-            title: "询价时间",
-            data: "InquiryTime"
-        }, {
-            title: "询价时间",
-            data: "ProjectSource"
-        }, {
-            title: "询价时间",
-            data: "city"
-        }, {
-            title: "询价时间",
-            data: "region"
-        }, {
-            title: "询价时间",
-            data: "district"
-        }, {
-            title: "询价时间",
-            data: "residentialAreaName"
-        }, {
-            title: "询价时间",
-            data: "residentialAreaAddress"
-        }, {
-            title: "询价时间",
-            data: "builtYear"
-        }, {
-            title: "询价时间",
-            data: "area"
-        }, {
-            title: "询价时间",
-            data: "price"
-        }, {
-            title: "询价时间",
-            data: "priceTime"
-        }]
+        'onSelectError': function(file, errorCode, errorMsg) {
+
+        },
+        'onUploadSuccess': function(file, data, response) {
+
+        },
+        'onUploadError': function(file, errorCode, errorMsg, errorString) {
+
+        },
+        'onQueueComplete': function(queueData) {},
+        'height': 18,
+        'width': 60,
+        'fileTypeDesc': 'Excel',
+        'fileTypeExts': '*.xlsx;*.xls',
+        'fileSizeLimit': 1024 * 50,
+        //上传文件页面中，你想要用来作为文件队列的元素的id, 默认为false  自动生成,  不带#
+        'queueID': 'fileQueue',
+        'buttonImageURL ':'../../resources/images/bg.png',
+        'buttonText': '<span class="fs-md"><i class="fa fa-cloud-upload fs-md"></i></span>导入',
+        //选择文件后自动上传
+        'auto': true,
+        //设置为true将允许多文件上传
+        'multi': false
     });
-}
+});
 
 function info(id, event) {
     stopBubble(event);
@@ -236,7 +212,7 @@ function edit(id, event) {
 
 function deleted(id, event) {
     stopBubble(event);
-    _idx = layer.confirm('案例删除后将无法回复,您确定执行次操作？', {
+    _idx = layer.confirm('楼幢信息删除后将无法恢复,您确定执行次操作？', {
         btn: ['确认', '取消'],
         icon: 2,
         shade: 0

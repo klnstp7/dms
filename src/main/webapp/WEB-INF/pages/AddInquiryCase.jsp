@@ -139,9 +139,9 @@
                     </td>
                 </tr>
             </table>
-            <p class="f-im form-tb-info p-10">注意:上述字段未能满足实际使用情况时可使用自定义字段，格式为"自定义字段名称+冒号+字段内容“并以分号‘；’结尾。如："周边公交站：123路，130路；学校：xxx小学；"。需要使用多个自定义字段请按规定格式一并填写到"自定义字段"输入框中。</p>
+            <p class="f-im form-tb-info p-10">注意:上述字段未能满足实际使用情况时可使用自定义字段，格式为"{自定义字段名称:字段内容,自定义字段名称:字段内容}"。如："{绿化率:80%,周边公交站:123路,学校:xxx小学}"。需要使用多个自定义字段请按规定格式一并填写到"自定义字段"输入框中。</p>
             <div class="p-10 f-tc">
-                <button type="button" class="btn btn-cancel" id="cancel">取消</button>
+
                 <button type="button" class="btn btn-save" id="uplodata">完成</button>
             </div>
         </div>
@@ -257,10 +257,12 @@
                 }
             },
             errorPlacement: function(error, element) {
-                $("#" + element[0].id).addClass("error-border");
-                dialog = layer.tips(error[0].innerHTML, "#" + element[0].id, {
-                    tips: [2, '#F99228']
-                });
+                if(error[0].innerHTML!=""){
+                    dialog = layer.tips(error[0].innerHTML, "#" + element[0].id, {
+                        tips: [1, '#F99228']
+                    });
+                    $("#" + element[0].id).addClass("error-border");
+                }
             },
             success: function(label) {
                 layer.close(dialog);

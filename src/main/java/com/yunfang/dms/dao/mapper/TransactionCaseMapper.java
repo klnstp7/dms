@@ -52,7 +52,7 @@ public interface TransactionCaseMapper {
         "#{toward,jdbcType=VARCHAR}, #{buildYear,jdbcType=INTEGER}, ",
         "#{area,jdbcType=DECIMAL}, #{price,jdbcType=DECIMAL}, #{totalPrice,jdbcType=DECIMAL}, ",
         "#{projectAddress,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, ",
-        "#{companyId,jdbcType=INTEGER}, #{pricetime,jdbcType=TIMESTAMP}, ",
+        "#{companyId,jdbcType=INTEGER}, #{priceTime,jdbcType=TIMESTAMP}, ",
         "#{createDateTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, ",
         "#{extendCol,jdbcType=LONGVARCHAR})"
     })
@@ -84,7 +84,7 @@ public interface TransactionCaseMapper {
         @Result(column="ProjectAddress", property="projectAddress", jdbcType=JdbcType.VARCHAR),
         @Result(column="Remark", property="remark", jdbcType=JdbcType.VARCHAR),
         @Result(column="CompanyID", property="companyId", jdbcType=JdbcType.INTEGER),
-        @Result(column="PriceTime", property="pricetime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="PriceTime", property="priceTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="CreateDateTime", property="createDateTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="LastUpdateTime", property="lastUpdateTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="ExtendCol", property="extendCol", jdbcType=JdbcType.LONGVARCHAR)
@@ -112,7 +112,7 @@ public interface TransactionCaseMapper {
         @Result(column="ProjectAddress", property="projectAddress", jdbcType=JdbcType.VARCHAR),
         @Result(column="Remark", property="remark", jdbcType=JdbcType.VARCHAR),
         @Result(column="CompanyID", property="companyId", jdbcType=JdbcType.INTEGER),
-        @Result(column="PriceTime", property="pricetime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="PriceTime", property="priceTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="CreateDateTime", property="createDateTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="LastUpdateTime", property="lastUpdateTime", jdbcType=JdbcType.TIMESTAMP)
     })
@@ -146,7 +146,7 @@ public interface TransactionCaseMapper {
         @Result(column="ProjectAddress", property="projectAddress", jdbcType=JdbcType.VARCHAR),
         @Result(column="Remark", property="remark", jdbcType=JdbcType.VARCHAR),
         @Result(column="CompanyID", property="companyId", jdbcType=JdbcType.INTEGER),
-        @Result(column="PriceTime", property="pricetime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="PriceTime", property="priceTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="CreateDateTime", property="createDateTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="LastUpdateTime", property="lastUpdateTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="ExtendCol", property="extendCol", jdbcType=JdbcType.LONGVARCHAR)
@@ -185,7 +185,7 @@ public interface TransactionCaseMapper {
           "ProjectAddress = #{projectAddress,jdbcType=VARCHAR},",
           "Remark = #{remark,jdbcType=VARCHAR},",
           "CompanyID = #{companyId,jdbcType=INTEGER},",
-          "PriceTime = #{pricetime,jdbcType=TIMESTAMP},",
+          "PriceTime = #{priceTime,jdbcType=TIMESTAMP},",
           "CreateDateTime = #{createDateTime,jdbcType=TIMESTAMP},",
           "LastUpdateTime = #{lastUpdateTime,jdbcType=TIMESTAMP},",
           "ExtendCol = #{extendCol,jdbcType=LONGVARCHAR}",
@@ -213,7 +213,7 @@ public interface TransactionCaseMapper {
           "ProjectAddress = #{projectAddress,jdbcType=VARCHAR},",
           "Remark = #{remark,jdbcType=VARCHAR},",
           "CompanyID = #{companyId,jdbcType=INTEGER},",
-          "PriceTime = #{pricetime,jdbcType=TIMESTAMP},",
+          "PriceTime = #{priceTime,jdbcType=TIMESTAMP},",
           "CreateDateTime = #{createDateTime,jdbcType=TIMESTAMP},",
           "LastUpdateTime = #{lastUpdateTime,jdbcType=TIMESTAMP}",
         "where ID = #{id,jdbcType=BIGINT}"

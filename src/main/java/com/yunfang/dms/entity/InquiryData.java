@@ -1,6 +1,8 @@
 package com.yunfang.dms.entity;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class InquiryData {
@@ -186,8 +188,15 @@ public class InquiryData {
         return priceTime;
     }
 
-    public void setPriceTime(Date priceTime) {
-        this.priceTime = priceTime;
+    public void setPriceTime(String priceTime) throws ParseException {
+        if(priceTime!=null || !priceTime.trim().equals("")) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            this.priceTime = sdf.parse(priceTime);
+        }
+        else
+        {
+            this.priceTime=new Date();
+        }
     }
 
     public String getPropertyType() {
@@ -210,8 +219,15 @@ public class InquiryData {
         return inquiryTime;
     }
 
-    public void setInquiryTime(Date inquiryTime) {
-        this.inquiryTime = inquiryTime;
+    public void setInquiryTime(String inquiryTime) throws ParseException {
+        if(inquiryTime!=null || !inquiryTime.trim().equals("")) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            this.inquiryTime = sdf.parse(inquiryTime);
+        }
+        else
+        {
+            this.inquiryTime =new Date();
+        }
     }
 
     public String getInquirySource() {
@@ -234,16 +250,29 @@ public class InquiryData {
         return createDateTime;
     }
 
-    public void setCreateDateTime(Date createDateTime) {
-        this.createDateTime = createDateTime;
+    public void setCreateDateTime(String createDateTime) throws ParseException {
+        if(createDateTime!=null && !createDateTime.trim().equals("")) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            this.createDateTime = sdf.parse(createDateTime);
+        }
+        else
+        {
+            this.createDateTime=new Date();
+        }
     }
 
     public Date getLastUpdateTime() {
         return lastUpdateTime;
     }
 
-    public void setLastUpdateTime(Date lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
+    public void setLastUpdateTime(String lastUpdateTime) throws ParseException {
+        if(lastUpdateTime!=null || !lastUpdateTime.equals("")) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            this.lastUpdateTime = sdf.parse(lastUpdateTime);
+        }
+        else {
+            this.lastUpdateTime=new Date();
+        }
     }
 
     public String getExtendCol() {

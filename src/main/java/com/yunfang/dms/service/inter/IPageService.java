@@ -5,6 +5,6 @@ import com.yunfang.dms.dto.PageVo;
 /**
  * Created by Administrator on 2017/2/10.
  */
-public interface IPageService<T> extends IBaseService<T> {
-    PageVo<T> FindByPagging(T conditon, int index, int rows);
+public interface IPageService<T>{
+    PageVo<T> findByPaging(int start, int length,int draw,String filter,int companyId);
 }

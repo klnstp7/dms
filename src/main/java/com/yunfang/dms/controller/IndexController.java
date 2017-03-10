@@ -1,15 +1,20 @@
 package com.yunfang.dms.controller;
 
+import com.yunfang.dms.utils.CookiesUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * Created by Administrator on 2017/2/9.
  */
 @Controller
 @RequestMapping("/home")
-public class IndexController {
+public class IndexController extends BaseController {
     @RequestMapping("/index")
     public ModelAndView index() {
         ModelAndView mv = new ModelAndView("index");
@@ -42,6 +47,11 @@ public class IndexController {
     @RequestMapping("/ownDataOffer")
     public ModelAndView ownDataOffer() {
         ModelAndView mv = new ModelAndView("ownDataOffer");
+        return mv;
+    }
+    @RequestMapping("/price")
+    public ModelAndView Price() {
+        ModelAndView mv = new ModelAndView("price");
         return mv;
     }
     @RequestMapping("/ownDataReport")
@@ -114,6 +124,28 @@ public class IndexController {
     public ModelAndView AddRoomInfo() {
         ModelAndView mv = new ModelAndView("AddRoomInfo");
         return mv;
+    }
+    @RequestMapping("/AddPrice")
+    public ModelAndView AddPrice() {
+        ModelAndView mv = new ModelAndView("AddPrice");
+        return mv;
+    }
+    @RequestMapping("/config")
+    public ModelAndView config() {
+        ModelAndView mv = new ModelAndView("config");
+        return mv;
+    }
+
+    @ResponseBody
+    @RequestMapping("changeCity")
+    public Boolean changeCity(String cityName, HttpServletResponse response){
+        try {
+            CookiesUtil.addCookie(response,"CityName",cityName, Integer.MAX_VALUE);
+        }
+        catch (IOException e){
+            return false;
+        }
+        return true;
     }
 }
 

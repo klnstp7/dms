@@ -1,14 +1,16 @@
 package com.yunfang.dms.service.inter;
 
 import com.yunfang.dms.dto.BuildingBaseDataDto;
+import com.yunfang.dms.dto.UpLoadFileResultDto;
 import com.yunfang.dms.entity.BuildingBaseDataCond;
+import com.yunfang.dms.exception.CustomException;
 
 import java.util.List;
 
 /**
  * Created by Administrator on 2017/2/7.
  */
-public interface IBuildingBaseDataService extends IBaseService<BuildingBaseDataDto> {
+public interface IBuildingBaseDataService extends IBaseService<BuildingBaseDataDto,BuildingBaseDataCond>,IPageService<BuildingBaseDataDto> {
 
     /**
      * 插入
@@ -42,5 +44,13 @@ public interface IBuildingBaseDataService extends IBaseService<BuildingBaseDataD
     @Override
     BuildingBaseDataDto get(Long id);
 
+    @Override
     List<BuildingBaseDataDto> selectByCond(BuildingBaseDataCond cond);
+
+    UpLoadFileResultDto batchInsertBuildingBase(String filename, String configNodeName) throws CustomException;
+    Boolean update(BuildingBaseDataDto dto,Integer CompanyId, String userName) throws CustomException;
+
+    Boolean delete(Long id,Integer CompanyId) throws CustomException;
+
+    Boolean batchDelete(List<Long> ids,Integer CompanyId) throws CustomException;
 }

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <!--询价案例  模版与实体字段对应关系-->
+    <!--节点说明：template,模版中的列头；entitycol:实体中的字段名；datatype，数据类型（用于入库验证）;isnull：允许为空(用于入库验证)-->
+    <xunjiaanli>
+        <item templatecol="城市" entitycol="cityName"  datatype="String" isnull="false"></item>
+        <item templatecol="行政区" entitycol="district" datatype="String" isnull="false"></item>
+        <item templatecol="片区" entitycol="region" datatype="String" isnull="false"></item>
+        <item templatecol="小区名称" entitycol="community" datatype="String" isnull="false"></item>
+        <item templatecol="小区地址" entitycol="address" datatype="String" isnull="false"></item>
+        <item templatecol="楼幢名称" entitycol="buildingName" datatype="String" isnull="false"></item>
+        <item templatecol="户名称" entitycol="houseName" datatype="String" isnull="false"></item>
+        <item templatecol="所在楼层" entitycol="floor"  datatype="Integer" isnull="false"></item>
+        <item templatecol="总楼层" entitycol="totalFloor"  datatype="Integer" isnull="false"></item>
+        <item templatecol="朝向" entitycol="toward"  datatype="String" isnull="true"></item>
+        <item templatecol="建成年代" entitycol="buildYear"  datatype="Integer" isnull="true"></item>
+        <item templatecol="建筑面积" entitycol="area"  datatype="Double" isnull="false"></item>
+        <item templatecol="询值价格" entitycol="inquiryPrice"  datatype="BigDecimal" isnull="false"></item>
+        <item templatecol="市场价格" entitycol="shichangPrice"  datatype="BigDecimal" isnull="false"></item>
+        <item templatecol="询价方" entitycol="customerOrg"  datatype="String" isnull="false"></item>
+        <item templatecol="价格时点" entitycol="priceTime"  datatype="Date" isnull="false"></item>
+        <item templatecol="询价时间" entitycol="inquiryTime"  datatype="Date" isnull="false"></item>
+        <item templatecol="权利属性" entitycol="propertyType"  datatype="String" isnull="true"></item>
+        <item templatecol="询价来源" entitycol="inquirySource"  datatype="String" isnull="true"></item>
+        <item templatecol="备注" entitycol="remark"  datatype="String" isnull="true"></item>
+    </xunjiaanli>
+
+    <!--成交案例  模版与实体字段对应关系-->
+    <chengjiaoanli>
+        <item templatecol="城市" entitycol="cityName"  datatype="String" isnull="false"></item>
+        <item templatecol="行政区" entitycol="district"  datatype="String" isnull="false"></item>
+        <item templatecol="片区" entitycol="region"  datatype="String" isnull="false"></item>
+        <item templatecol="小区名称" entitycol="community"  datatype="String" isnull="false"></item>
+        <item templatecol="小区地址" entitycol="address"  datatype="String" isnull="false"></item>
+        <item templatecol="楼幢名称" entitycol="buildingName"  datatype="String" isnull="false"></item>
+        <item templatecol="户型" entitycol="roomLayout"  datatype="String" isnull="false"></item>
+        <item templatecol="户名称" entitycol="houseName"  datatype="String" isnull="false"></item>
+        <item templatecol="所在楼层" entitycol="floor"  datatype="Integer" isnull="false"></item>
+        <item templatecol="总楼层" entitycol="totalFloor"  datatype="Integer" isnull="false"></item>
+        <item templatecol="朝向" entitycol="toward"  datatype="String" isnull="true"></item>
+        <item templatecol="建成年代" entitycol="buildYear"  datatype="Integer" isnull="false"></item>
+        <item templatecol="建筑面积" entitycol="area"  datatype="Double" isnull="false"></item>
+        <item templatecol="单价" entitycol="price"  datatype="BigDecimal" isnull="false"></item>
+        <item templatecol="总价" entitycol="totalPrice"  datatype="BigDecimal" isnull="false"></item>
+        <item templatecol="项目地址" entitycol="projectAddress"  datatype="String" isnull="false"></item>
+        <item templatecol="价格时间" entitycol="priceTime"  datatype="Date" isnull="false"></item>
+        <item templatecol="备注" entitycol="remark"  datatype="String" isnull="true"></item>
+    </chengjiaoanli>
+    <!--报盘案例  模版与实体字段对应关系-->
+    <baopananli>
+        <item templatecol="城市" entitycol="cityName"  datatype="String" isnull="false"></item>
+        <item templatecol="行政区" entitycol="district"  datatype="String" isnull="false"></item>
+        <item templatecol="片区" entitycol="region"  datatype="String" isnull="false"></item>
+        <item templatecol="小区名称" entitycol="community"  datatype="String" isnull="false"></item>
+        <item templatecol="小区地址" entitycol="address"  datatype="String" isnull="false"></item>
+        <item templatecol="户型" entitycol="roomLayout"  datatype="String" isnull="false"></item>
+        <item templatecol="所在楼层" entitycol="floor"  datatype="Integer" isnull="false"></item>
+        <item templatecol="总楼层" entitycol="totalFloor"  datatype="Integer" isnull="false"></item>
+        <item templatecol="朝向" entitycol="toward"  datatype="String" isnull="true"></item>
+        <item templatecol="建成年代" entitycol="buildYear"  datatype="Integer" isnull="false"></item>
+        <item templatecol="建筑面积" entitycol="area"  datatype="Double" isnull="false"></item>
+        <item templatecol="单价" entitycol="price"  datatype="BigDecimal" isnull="false"></item>
+        <item templatecol="总价" entitycol="totalPrice"  datatype="BigDecimal" isnull="false"></item>
+        <item templatecol="来源" entitycol="dataSource"  datatype="String" isnull="false"></item>
+        <item templatecol="报盘时间" entitycol="offerTime"  datatype="Date" isnull="false"></item>
+        <item templatecol="备注" entitycol="remark"  datatype="String" isnull="true"></item>
+    </baopananli>
+    <!--报告案例  模版与实体字段对应关系-->
+    <baogaoanli>
+        <item templatecol="城市" entitycol="cityName"  datatype="String" isnull="false"></item>
+        <item templatecol="行政区" entitycol="district"  datatype="String"  isnull="false"></item>
+        <item templatecol="片区" entitycol="region"  datatype="String" isnull="false"></item>
+        <item templatecol="小区名称" entitycol="community"  datatype="String" isnull="false"></item>
+        <item templatecol="小区地址" entitycol="address"  datatype="String" isnull="false"></item>
+        <item templatecol="楼幢名称" entitycol="buildingName"  datatype="String" isnull="false"></item>
+        <item templatecol="报告号" entitycol="reportNo"  datatype="String" isnull="false"></item>
+        <item templatecol="报告时间" entitycol="reportTime"  datatype="String" isnull="false"></item>
+        <item templatecol="户型" entitycol="roomLayout"  datatype="String" isnull="false"></item>
+        <item templatecol="户名称" entitycol="houseName"  datatype="String" isnull="false"></item>
+        <item templatecol="所在楼层" entitycol="floor"  datatype="Integer" isnull="false"></item>
+        <item templatecol="总楼层" entitycol="totalFloor"  datatype="Integer" isnull="false"></item>
+        <item templatecol="朝向" entitycol="toward"  datatype="String" isnull="true"></item>
+        <item templatecol="建成年代" entitycol="buildYear"  datatype="Integer" isnull="false"></item>
+        <item templatecol="建筑面积" entitycol="area"  datatype="Double" isnull="false"></item>
+        <item templatecol="总价" entitycol="totalPrice"  datatype="BigDecimal" isnull="false"></item>
+        <item templatecol="估价目的" entitycol="purpose"  datatype="String" isnull="false"></item>
+        <item templatecol="房屋性质" entitycol="houseProperty"  datatype="String" isnull="false"></item>
+        <item templatecol="建筑类别" entitycol="buildType"  datatype="String" isnull="false"></item>
+        <item templatecol="装修程度" entitycol="decoration"  datatype="String" isnull="true"></item>
+        <item templatecol="客户信息" entitycol="customerInfo"  datatype="String" isnull="true"></item>
+        <item templatecol="户型特性" entitycol="roomProperty"  datatype="String" isnull="true"></item>
+        <item templatecol="备注" entitycol="remark"  datatype="String" isnull="true"></item>
+    </baogaoanli>
+
+    <!--小区基础数据导入-->
+    <communitybase>
+        <item templatecol="城市" entitycol="cityName"  datatype="String" isnull="false"></item>
+        <item templatecol="行政区" entitycol="district"  datatype="String"  isnull="false"></item>
+        <item templatecol="片区" entitycol="region"  datatype="String" isnull="false"></item>
+        <item templatecol="小区名称" entitycol="community"  datatype="String" isnull="false"></item>
+        <item templatecol="小区地址" entitycol="address"  datatype="String" isnull="true"></item>
+        <item templatecol="小区别名" entitycol="alias"  datatype="String" isnull="true"></item>
+        <item templatecol="建成年代" entitycol="buildYear"  datatype="String" isnull="true"></item>
+        <item templatecol="开发商" entitycol="developers"  datatype="String" isnull="true"></item>
+        <item templatecol="小区面积" entitycol="area"  datatype="Double" isnull="true"></item>
+        <item templatecol="楼幢数量" entitycol="totalBuilding"  datatype="Integer" isnull="true"></item>
+        <item templatecol="总户数" entitycol="totalHouse"  datatype="Integer" isnull="true"></item>
+        <item templatecol="绿化率" entitycol="greenPercent"  datatype="Double" isnull="true"></item>
+        <item templatecol="基础设施" entitycol="baseInstallation"  datatype="String" isnull="true"></item>
+        <item templatecol="周边配套" entitycol="mating"  datatype="String" isnull="true"></item>
+        <item templatecol="交通状况" entitycol="trafficInfo"  datatype="String" isnull="true"></item>
+        <item templatecol="特征标签" entitycol="feaTuRemark"  datatype="String" isnull="true"></item>
+        <item templatecol="备注" entitycol="remark"  datatype="String" isnull="true"></item>
+    </communitybase>
+
+    <!--楼幢基础数据导入-->
+    <buildingbase>
+        <item templatecol="城市" entitycol="cityName"  datatype="String" isnull="false"></item>
+        <item templatecol="行政区" entitycol="district"  datatype="String"  isnull="false"></item>
+        <item templatecol="片区" entitycol="region"  datatype="String" isnull="false"></item>
+        <item templatecol="小区名称" entitycol="community"  datatype="String" isnull="false"></item>
+        <item templatecol="楼幢名称" entitycol="buildingName"  datatype="String" isnull="false"></item>
+        <item templatecol="楼幢别名" entitycol="buildingAlias"  datatype="String" isnull="false"></item>
+        <item templatecol="楼幢地址" entitycol="address"  datatype="String" isnull="false"></item>
+        <item templatecol="建成年代" entitycol="buildYear"  datatype="Integer" isnull="false"></item>
+        <item templatecol="总楼层" entitycol="totalFloor"  datatype="Integer" isnull="false"></item>
+        <item templatecol="总户数" entitycol="totalHouse"  datatype="String" isnull="false"></item>
+        <item templatecol="备注" entitycol="remark"  datatype="String" isnull="true"></item>
+    </buildingbase>
+
+    <!--单元基础数据导入-->
+    <unitbase>
+        <item templatecol="城市" entitycol="cityName"  datatype="String" isnull="false"></item>
+        <item templatecol="行政区" entitycol="district"  datatype="String"  isnull="false"></item>
+        <item templatecol="片区" entitycol="region"  datatype="String" isnull="false"></item>
+        <item templatecol="小区名称" entitycol="community"  datatype="String" isnull="false"></item>
+        <item templatecol="楼幢名称" entitycol="buildingName"  datatype="String" isnull="false"></item>
+        <item templatecol="单元名称" entitycol="unitName"  datatype="String" isnull="false"></item>
+        <item templatecol="建成年代" entitycol="buildYear"  datatype="Integer" isnull="false"></item>
+        <item templatecol="总楼层" entitycol="totalFloor"  datatype="Integer" isnull="false"></item>
+        <item templatecol="总户数" entitycol="totalHouse"  datatype="String" isnull="false"></item>
+        <item templatecol="备注" entitycol="remark"  datatype="String" isnull="true"></item>
+    </unitbase>
+
+    <!--户基础数据导入-->
+    <housebase>
+        <item templatecol="城市" entitycol="cityName"  datatype="String" isnull="false"></item>
+        <item templatecol="行政区" entitycol="district"  datatype="String"  isnull="false"></item>
+        <item templatecol="片区" entitycol="region"  datatype="String" isnull="false"></item>
+        <item templatecol="小区名称" entitycol="community"  datatype="String" isnull="false"></item>
+        <item templatecol="楼幢名称" entitycol="buildingName"  datatype="String" isnull="false"></item>
+        <item templatecol="单元名称" entitycol="unitName"  datatype="String" isnull="false"></item>
+        <item templatecol="户号" entitycol="houseNum"  datatype="Integer" isnull="false"></item>
+        <item templatecol="户名" entitycol="houseName"  datatype="Integer" isnull="false"></item>
+        <item templatecol="地址" entitycol="address"  datatype="String" isnull="false"></item>
+        <item templatecol="建筑面积" entitycol="area"  datatype="String" isnull="true"></item>
+        <item templatecol="使用面积" entitycol="useArea"  datatype="String" isnull="false"></item>
+        <item templatecol="主体朝向" entitycol="toward"  datatype="String" isnull="true"></item>
+        <item templatecol="房屋类型" entitycol="houseType"  datatype="String" isnull="true"></item>
+        <item templatecol="实际层" entitycol="floor"  datatype="String" isnull="false"></item>
+        <item templatecol="总层数" entitycol="totalFloor"  datatype="String" isnull="true"></item>
+        <item templatecol="户型" entitycol="roomLayout"  datatype="String" isnull="false"></item>
+        <item templatecol="备注" entitycol="remark"  datatype="String" isnull="true"></item>
+    </housebase>
+</root>

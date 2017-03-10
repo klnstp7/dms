@@ -1,5 +1,6 @@
 package com.yunfang.dms.dto;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -70,12 +71,12 @@ public class BuildingBaseDataDto {
     /**
      *创建时间
      */
-    private Date createDatetime;
+    private String createDateTime;
 
     /**
      *最后更新时间
      */
-    private Date lastUpdateTime;
+    private String lastUpdateTime;
 
 
 
@@ -195,20 +196,30 @@ public class BuildingBaseDataDto {
         this.remark = remark;
     }
 
-    public Date getCreateDatetime() {
-        return createDatetime;
+    public String getCreateDateTime() {
+        return createDateTime;
     }
 
-    public void setCreateDatetime(Date createDatetime) {
-        this.createDatetime = createDatetime;
+    public void setCreateDateTime(Date createDateTime) {
+        SimpleDateFormat dataFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.createDateTime = dataFormat.format(createDateTime);
     }
 
-    public Date getLastUpdateTime() {
+    public void setCreateDateTime(String createDateTime) {
+        this.createDateTime = createDateTime;
+    }
+
+    public String getLastUpdateTime() {
         return lastUpdateTime;
     }
 
-    public void setLastUpdateTime(Date lastUpateTime) {
-        this.lastUpdateTime = lastUpateTime;
+    public void setLastUpdateTime(Date lastUpdateTime){
+        SimpleDateFormat dataFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.lastUpdateTime = dataFormat.format(lastUpdateTime);
+    }
+
+    public void setLastUpdateTime(String lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
     }
 
     public String getExtendCol() {

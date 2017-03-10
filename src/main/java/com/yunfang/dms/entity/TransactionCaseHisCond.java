@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class TransactionCaseHisCond {
+public class TransactionCaseHisCond extends BaseRowBound {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -1356,63 +1356,63 @@ public class TransactionCaseHisCond {
             return (Criteria) this;
         }
 
-        public Criteria andPricetimeIsNull() {
+        public Criteria andPriceTimeIsNull() {
             addCriterion("PriceTime is null");
             return (Criteria) this;
         }
 
-        public Criteria andPricetimeIsNotNull() {
+        public Criteria andPriceTimeIsNotNull() {
             addCriterion("PriceTime is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPricetimeEqualTo(Date value) {
-            addCriterion("PriceTime =", value, "pricetime");
+        public Criteria andPriceTimeEqualTo(Date value) {
+            addCriterion("PriceTime =", value, "priceTime");
             return (Criteria) this;
         }
 
-        public Criteria andPricetimeNotEqualTo(Date value) {
-            addCriterion("PriceTime <>", value, "pricetime");
+        public Criteria andPriceTimeNotEqualTo(Date value) {
+            addCriterion("PriceTime <>", value, "priceTime");
             return (Criteria) this;
         }
 
-        public Criteria andPricetimeGreaterThan(Date value) {
-            addCriterion("PriceTime >", value, "pricetime");
+        public Criteria andPriceTimeGreaterThan(Date value) {
+            addCriterion("PriceTime >", value, "priceTime");
             return (Criteria) this;
         }
 
-        public Criteria andPricetimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("PriceTime >=", value, "pricetime");
+        public Criteria andPriceTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("PriceTime >=", value, "priceTime");
             return (Criteria) this;
         }
 
-        public Criteria andPricetimeLessThan(Date value) {
-            addCriterion("PriceTime <", value, "pricetime");
+        public Criteria andPriceTimeLessThan(Date value) {
+            addCriterion("PriceTime <", value, "priceTime");
             return (Criteria) this;
         }
 
-        public Criteria andPricetimeLessThanOrEqualTo(Date value) {
-            addCriterion("PriceTime <=", value, "pricetime");
+        public Criteria andPriceTimeLessThanOrEqualTo(Date value) {
+            addCriterion("PriceTime <=", value, "priceTime");
             return (Criteria) this;
         }
 
-        public Criteria andPricetimeIn(List<Date> values) {
-            addCriterion("PriceTime in", values, "pricetime");
+        public Criteria andPriceTimeIn(List<Date> values) {
+            addCriterion("PriceTime in", values, "priceTime");
             return (Criteria) this;
         }
 
-        public Criteria andPricetimeNotIn(List<Date> values) {
-            addCriterion("PriceTime not in", values, "pricetime");
+        public Criteria andPriceTimeNotIn(List<Date> values) {
+            addCriterion("PriceTime not in", values, "priceTime");
             return (Criteria) this;
         }
 
-        public Criteria andPricetimeBetween(Date value1, Date value2) {
-            addCriterion("PriceTime between", value1, value2, "pricetime");
+        public Criteria andPriceTimeBetween(Date value1, Date value2) {
+            addCriterion("PriceTime between", value1, value2, "priceTime");
             return (Criteria) this;
         }
 
-        public Criteria andPricetimeNotBetween(Date value1, Date value2) {
-            addCriterion("PriceTime not between", value1, value2, "pricetime");
+        public Criteria andPriceTimeNotBetween(Date value1, Date value2) {
+            addCriterion("PriceTime not between", value1, value2, "priceTime");
             return (Criteria) this;
         }
 

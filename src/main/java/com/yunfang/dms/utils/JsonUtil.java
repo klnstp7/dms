@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.yunfang.dms.dto.PageVo;
 
 import java.lang.reflect.Type;
 import java.net.URLDecoder;
@@ -61,4 +62,20 @@ public class JsonUtil {
 	}
 	
 	//}}
+
+
+	//{{带有Extend字段的obj对象转为字符串
+	/**
+	 * 带有Extend字段的obj对象转为字符串
+	 * @param obj
+	 * @return String
+	 */
+	public static String getExtendJsonString(Object obj){
+		Gson gson=new Gson();
+		String str=gson.toJson(obj);
+		str=str.replace("\"extendCol\":\"{\\\"","\"").replace("\\\"}\"","\"").replace("\\\"","\"");
+		return str;
+	}
+
+	// }}
 }

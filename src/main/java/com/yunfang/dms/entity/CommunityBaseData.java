@@ -1,6 +1,8 @@
 package com.yunfang.dms.entity;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CommunityBaseData {
@@ -204,18 +206,30 @@ public class CommunityBaseData {
         return createDateTime;
     }
 
-    public void setCreateDateTime(Date createDateTime) {
-        this.createDateTime = createDateTime;
+    public void setCreateDateTime(String createDateTime) throws ParseException {
+        if(createDateTime!=null && !createDateTime.trim().equals("")) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            this.createDateTime = sdf.parse(createDateTime);
+        }
+        else
+        {
+            this.createDateTime=new Date();
+        }
     }
 
     public Date getLastUpdateTime() {
         return lastUpdateTime;
     }
 
-    public void setLastUpdateTime(Date lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
+    public void setLastUpdateTime(String lastUpdateTime) throws ParseException {
+        if(lastUpdateTime!=null || !lastUpdateTime.equals("")) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            this.lastUpdateTime = sdf.parse(lastUpdateTime);
+        }
+        else {
+            this.lastUpdateTime=new Date();
+        }
     }
-
     public String getExtendCol() {
         return extendCol;
     }

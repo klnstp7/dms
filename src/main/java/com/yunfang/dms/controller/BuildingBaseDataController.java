@@ -1,44 +1,137 @@
 package com.yunfang.dms.controller;
 
-import com.yunfang.dms.dto.BuildingBaseDataDto;
+import com.yunfang.dms.dto.*;
+import com.yunfang.dms.entity.BuildingBaseDataCond;
+import com.yunfang.dms.enums.SourceTableEmum;
+import com.yunfang.dms.exception.CustomException;
+import com.yunfang.dms.service.inter.IBuildingBaseDataHisService;
 import com.yunfang.dms.service.inter.IBuildingBaseDataService;
+import com.yunfang.dms.service.inter.IExtendConfigService;
+import com.yunfang.dms.utils.ExcelUtil;
+import com.yunfang.dms.utils.JsonUtil;
+import com.yunfang.dms.utils.UserInfoUtil;
+import com.yunfang.dms.utils.XmlUtil;
+import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Date;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/2/7.
  */
 @Controller
-@RequestMapping("/BaseData")
+@RequestMapping("/buildingBaseData")
 public class BuildingBaseDataController {
     @Autowired
-    private IBuildingBaseDataService buildingService;
+    private IBuildingBaseDataService buildingBaseDataService;
+    @Autowired
+    private IBuildingBaseDataHisService buildingBaseDataHisService;
+    @Autowired
+    private IExtendConfigService extendConfigService;
 
-    @RequestMapping("/Building")
-    public String getBuildingData(){
-        buildingService.get(new Long(1));
-        return "test";
+    @RequestMapping("/index")
+    public ModelAndView index() {
+        ModelAndView mv = new ModelAndView("/buildingBaseData/index");
+        return mv;
     }
 
-    @RequestMapping("/Add")
-    public String addBuildingData(String city){
-        BuildingBaseDataDto dto = new BuildingBaseDataDto();
-        dto.setAddress("北京市西城区车公庄大街10号");
-        dto.setBuildingAlias("北京市西城区车公庄大街10号");
-        dto.setBuildingName("1号楼");
-        dto.setBuildYear("2015");
-        dto.setCityName("北京");
-        dto.setCommunity("五栋大楼");
-        dto.setCompanyId(1);
-        dto.setCreateDatetime(new Date());
-        dto.setLastUpdateTime(new Date());
-        dto.setRegion("西城区");
-        dto.setDistrict("西城区");
-        dto.setExtendCol("户号:123,绿化率:100%");
-        buildingService.insert(dto);
-        return "test";
+    @RequestMapping(value = "/getPaging", method = RequestMethod.GET)
+    public void getPaging(@RequestParam int start, @RequestParam int length, @RequestParam int draw, @RequestParam String filter, HttpServletResponse response)
+            throws ServletException, IOException {
+        UserInfoApiDto user= UserInfoUtil.getCurrentUser();
+        PageVo<BuildingBaseDataDto> pageVo =  buildingBaseDataService.findByPaging(start,length,draw,filter,user.getCompanyId());
+        String str= JsonUtil.getExtendJsonString(pageVo);
+        response.getWriter().print(str);
+    }
+
+    @RequestMapping("/add")
+    public ModelAndView add() {
+        ModelAndView mv = new ModelAndView("/buildingBaseData/add");
+        List<String> columns=new ArrayList<String>();
+        Map<String, TempLateConfigDto> configColMap = XmlUtil.getConfigForInput("buildingbase","entityCol");
+        if(configColMap!=null){
+            for (Map.Entry<String, TempLateConfigDto> key : configColMap.entrySet()) {
+                columns.add(key.getKey());
+            }
+        }
+        columns.add("id");
+        columns.add("extendCol");
+        mv.addObject("columns",columns);
+        return mv;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "update",method = RequestMethod.POST)
+    public Boolean update(BuildingBaseDataDto dto) throws CustomException {
+        UserInfoApiDto user=UserInfoUtil.getCurrentUser();
+        dto.setCompanyId(user.getCompanyId());
+        return buildingBaseDataService.update(dto,user.getCompanyId(),user.getLoginName());
+    }
+
+    @ResponseBody
+    @RequestMapping(value="delete",method = RequestMethod.POST)
+    public Boolean delete(@RequestParam Long id) throws CustomException{
+        return buildingBaseDataService.delete(id,UserInfoUtil.getCurrentUser().getCompanyId());
+    }
+
+    @ResponseBody
+    @RequestMapping(value="batchDelete",method = RequestMethod.POST)
+    public Boolean batchDelete(@RequestParam Long[] ids) throws CustomException{
+        return buildingBaseDataService.batchDelete(java.util.Arrays.asList(ids),UserInfoUtil.getCurrentUser().getCompanyId());
+    }
+
+    @ResponseBody
+    @RequestMapping(value="get",method = RequestMethod.GET)
+    public BuildingBaseDataDto get(@RequestParam Long id){
+        return buildingBaseDataService.get(id);
+    }
+
+    @RequestMapping(value = "/getHis", method = RequestMethod.GET)
+    public void getHis(@RequestParam int start, @RequestParam int length, @RequestParam int draw, @RequestParam Long id, HttpServletResponse response)
+            throws ServletException, IOException {
+        PageVo<BuildingBaseDataHisDto> list =  buildingBaseDataHisService.findByPaging(start,length,draw,id);
+        String str= JsonUtil.getExtendJsonString(list);
+        response.getWriter().print(str);
+    }
+
+    @RequestMapping(value="batchDownload")
+    public void batchDownload(@RequestParam Long[] ids, HttpServletResponse response){
+        BuildingBaseDataCond cond=new BuildingBaseDataCond();
+        BuildingBaseDataCond.Criteria criteria=cond.createCriteria();
+        criteria.andIdIn(java.util.Arrays.asList(ids));
+        List<BuildingBaseDataDto> list=buildingBaseDataService.selectByCond(cond);
+        if(list==null||list.isEmpty()){
+            return;
+        }
+        String jsonStr=JsonUtil.getExtendJsonString(list);
+        JSONArray jsonArray = JSONArray.fromObject(jsonStr);
+        List<ExtendConfigDto> configs = extendConfigService.getExtendTitleList(UserInfoUtil.getCurrentUserCompanyId(), SourceTableEmum.BuildingBaseData.ordinal());
+        List<String> titles = new ArrayList<String>();
+        if (configs != null) {
+            for (ExtendConfigDto dto :
+                    configs) {
+                if (!titles.contains(dto.getColumnName())) {
+                    titles.add(dto.getColumnName());
+                }
+            }
+        }
+        Map<String, TempLateConfigDto> configColMap = XmlUtil.getConfigForInput("buildingbase","entityCol");
+        for(Iterator s = titles.iterator(); s.hasNext();)
+        {
+            String col=s.next().toString();
+            TempLateConfigDto dto=new TempLateConfigDto();
+            dto.setTemplateCol(col);
+            dto.setEntityCol(col);
+            configColMap.put(col,dto);
+        }
+        SimpleDateFormat dataFormat=new SimpleDateFormat("yyyyMMddHHmmss");
+        ExcelUtil.exportJsonToExcel("楼幢基础数据下载-"+dataFormat.format(new Date()),configColMap, jsonArray, response);
     }
 }

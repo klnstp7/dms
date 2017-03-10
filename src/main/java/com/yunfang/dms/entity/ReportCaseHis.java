@@ -34,11 +34,11 @@ public class ReportCaseHis {
 
     private String toward;
 
-    private String buildyear2;
+    private String buildYear;
 
     private BigDecimal area;
 
-    private BigDecimal totalprice;
+    private BigDecimal totalPrice;
 
     private String purpose;
 
@@ -50,7 +50,7 @@ public class ReportCaseHis {
 
     private String customerInfo;
 
-    private String roomProerty;
+    private String roomProperty;
 
     private String remark;
 
@@ -180,12 +180,12 @@ public class ReportCaseHis {
         this.toward = toward == null ? null : toward.trim();
     }
 
-    public String getBuildyear2() {
-        return buildyear2;
+    public String getBuildYear() {
+        return buildYear;
     }
 
-    public void setBuildyear2(String buildyear2) {
-        this.buildyear2 = buildyear2 == null ? null : buildyear2.trim();
+    public void setBuildYear(String buildYear) {
+        this.buildYear = buildYear == null ? null : buildYear.trim();
     }
 
     public BigDecimal getArea() {
@@ -197,11 +197,11 @@ public class ReportCaseHis {
     }
 
     public BigDecimal getTotalprice() {
-        return totalprice;
+        return totalPrice;
     }
 
-    public void setTotalprice(BigDecimal totalprice) {
-        this.totalprice = totalprice;
+    public void setTotalprice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public String getPurpose() {
@@ -244,12 +244,12 @@ public class ReportCaseHis {
         this.customerInfo = customerInfo == null ? null : customerInfo.trim();
     }
 
-    public String getRoomProerty() {
-        return roomProerty;
+    public String getRoomProperty() {
+        return roomProperty;
     }
 
-    public void setRoomProerty(String roomProerty) {
-        this.roomProerty = roomProerty == null ? null : roomProerty.trim();
+    public void setRoomProperty(String roomProperty) {
+        this.roomProperty = roomProperty == null ? null : roomProperty.trim();
     }
 
     public String getRemark() {

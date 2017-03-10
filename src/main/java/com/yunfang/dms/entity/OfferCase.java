@@ -1,12 +1,12 @@
 package com.yunfang.dms.entity;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class OfferCase {
     private Long id;
-
-    private Long offerCaseId;
 
     private String cityName;
 
@@ -26,7 +26,7 @@ public class OfferCase {
 
     private String toward;
 
-    private String buildyear2;
+    private String buildYear;
 
     private BigDecimal area;
 
@@ -40,9 +40,11 @@ public class OfferCase {
 
     private String dataSource;
 
+    private Integer companyId;
+
     private Date createDateTime;
 
-    private String operator;
+    private Date lastUpdateTime;
 
     private String extendCol;
 
@@ -52,14 +54,6 @@ public class OfferCase {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getOfferCaseId() {
-        return offerCaseId;
-    }
-
-    public void setOfferCaseId(Long offerCaseId) {
-        this.offerCaseId = offerCaseId;
     }
 
     public String getCityName() {
@@ -134,12 +128,12 @@ public class OfferCase {
         this.toward = toward == null ? null : toward.trim();
     }
 
-    public String getBuildyear2() {
-        return buildyear2;
+    public String getBuildYear() {
+        return buildYear;
     }
 
-    public void setBuildyear2(String buildyear2) {
-        this.buildyear2 = buildyear2 == null ? null : buildyear2.trim();
+    public void setBuildYear(String buildYear) {
+        this.buildYear = buildYear == null ? null : buildYear.trim();
     }
 
     public BigDecimal getArea() {
@@ -178,8 +172,15 @@ public class OfferCase {
         return offerTime;
     }
 
-    public void setOfferTime(Date offerTime) {
-        this.offerTime = offerTime;
+    public void setOfferTime(String offerTime) throws ParseException {
+        if(offerTime!=null && !offerTime.trim().equals("")) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            this.offerTime = sdf.parse(offerTime);
+        }
+        else
+        {
+            this.offerTime=new Date();
+        }
     }
 
     public String getDataSource() {
@@ -190,20 +191,41 @@ public class OfferCase {
         this.dataSource = dataSource == null ? null : dataSource.trim();
     }
 
+    public Integer getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
+    }
+
     public Date getCreateDateTime() {
         return createDateTime;
     }
 
-    public void setCreateDateTime(Date createDateTime) {
-        this.createDateTime = createDateTime;
+    public void setCreateDateTime(String createDateTime) throws ParseException {
+        if(createDateTime!=null && !createDateTime.trim().equals("")) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            this.createDateTime = sdf.parse(createDateTime);
+        }
+        else
+        {
+            this.createDateTime=new Date();
+        }
     }
 
-    public String getOperator() {
-        return operator;
+    public Date getLastUpdateTime() {
+        return lastUpdateTime;
     }
 
-    public void setOperator(String operator) {
-        this.operator = operator == null ? null : operator.trim();
+    public void setLastUpdateTime(String lastUpdateTime) throws ParseException {
+        if(lastUpdateTime!=null || !lastUpdateTime.equals("")) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            this.lastUpdateTime = sdf.parse(lastUpdateTime);
+        }
+        else {
+            this.lastUpdateTime=new Date();
+        }
     }
 
     public String getExtendCol() {

@@ -1,6 +1,12 @@
 package com.yunfang.dms.utils;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 判断字符串工具类
@@ -135,5 +141,90 @@ public class StringUtil {
 		}
 
 		return str.substring(s, e);
+	}
+
+	/*
+   * 替换Excel中导入的数字中自动加 .0的情况
+   * */
+	public static String subZeroAndDot(String s) {
+		if (s.indexOf(".") > 0) {
+			s = s.replaceAll("0+?$", "");//去掉多余的0
+			s = s.replaceAll("[.]$", "");//如最后一位是.则去掉
+		}
+		return s;
+	}
+
+	//判断是否为数字
+	public static boolean isNumeric(String str) {
+		if(str==null || str.equals(""))
+			return true;
+		// 该正则表达式可以匹配所有的数字 包括负数
+		Pattern pattern = Pattern.compile("-?[0-9]+\\.?[0-9]*");
+		String bigStr;
+		try {
+			bigStr = new BigDecimal(str).toString();
+		} catch (Exception e) {
+			return false;//异常 说明包含非数字。
+		}
+		Matcher isNum = pattern.matcher(bigStr); // matcher是全匹配
+		if (!isNum.matches()) {
+			return false;
+		}
+		return true;
+	}
+	/**
+	 * 格式化string为Date
+	 *
+	 * @param datestr
+	 * @return date
+	 */
+	public static Date parseDate(String datestr) {
+		if (null == datestr || "".equals(datestr)) {
+			return null;
+		}
+		try {
+			String fmtstr = null;
+			if (datestr.indexOf(':') > 0) {
+				fmtstr = "yyyy-MM-dd HH:mm:ss";
+			} else {
+				fmtstr = "yyyy-MM-dd";
+			}
+			SimpleDateFormat sdf = new SimpleDateFormat(fmtstr, Locale.UK);
+			return sdf.parse(datestr);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	/**
+	 * 完整的判断中文汉字和符号
+	 * @param strName
+	 * @return
+     */
+	public static boolean isChinese(String strName) {
+		char[] ch = strName.toCharArray();
+		for (int i = 0; i < ch.length; i++) {
+			char c = ch[i];
+			if (isChinese(c)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 *  根据Unicode编码完美的判断中文汉字和符号
+	 * @param c
+	 * @return
+     */
+	private static boolean isChinese(char c) {
+		Character.UnicodeBlock ub = Character.UnicodeBlock.of(c);
+		if (ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS || ub == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
+				|| ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A || ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B
+				|| ub == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION || ub == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS
+				|| ub == Character.UnicodeBlock.GENERAL_PUNCTUATION) {
+			return true;
+		}
+		return false;
 	}
 }

@@ -28,9 +28,9 @@ public interface InquiryDataHisMapper {
 
     @Delete({
         "delete from inquirydata_his",
-        "where ID = #{id,jdbcType=INTEGER}"
+        "where ID = #{id,jdbcType=BIGINT}"
     })
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     @Insert({
         "insert into inquirydata_his (InquiryDataID, CityName, ",
@@ -58,16 +58,16 @@ public interface InquiryDataHisMapper {
         "#{remark,jdbcType=VARCHAR}, #{createDateTime,jdbcType=TIMESTAMP}, ",
         "#{operator,jdbcType=VARCHAR}, #{extendCol,jdbcType=LONGVARCHAR})"
     })
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
+    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Long.class)
     int insert(InquiryDataHis record);
 
     @InsertProvider(type=InquiryDataHisSqlProvider.class, method="insertSelective")
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
+    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Long.class)
     int insertSelective(InquiryDataHis record);
 
     @SelectProvider(type=InquiryDataHisSqlProvider.class, method="selectByExampleWithBLOBs")
     @Results({
-        @Result(column="ID", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="ID", property="id", jdbcType=JdbcType.BIGINT, id=true),
         @Result(column="InquiryDataID", property="inquiryDataId", jdbcType=JdbcType.BIGINT),
         @Result(column="CityName", property="cityName", jdbcType=JdbcType.VARCHAR),
         @Result(column="District", property="district", jdbcType=JdbcType.VARCHAR),
@@ -97,7 +97,7 @@ public interface InquiryDataHisMapper {
 
     @SelectProvider(type=InquiryDataHisSqlProvider.class, method="selectByExample")
     @Results({
-        @Result(column="ID", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="ID", property="id", jdbcType=JdbcType.BIGINT, id=true),
         @Result(column="InquiryDataID", property="inquiryDataId", jdbcType=JdbcType.BIGINT),
         @Result(column="CityName", property="cityName", jdbcType=JdbcType.VARCHAR),
         @Result(column="District", property="district", jdbcType=JdbcType.VARCHAR),
@@ -131,10 +131,10 @@ public interface InquiryDataHisMapper {
         "CustomerOrg, PriceTime, PropertyType, InquiryTime, InquirySource, Remark, CreateDateTime, ",
         "Operator, ExtendCol",
         "from inquirydata_his",
-        "where ID = #{id,jdbcType=INTEGER}"
+        "where ID = #{id,jdbcType=BIGINT}"
     })
     @Results({
-        @Result(column="ID", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="ID", property="id", jdbcType=JdbcType.BIGINT, id=true),
         @Result(column="InquiryDataID", property="inquiryDataId", jdbcType=JdbcType.BIGINT),
         @Result(column="CityName", property="cityName", jdbcType=JdbcType.VARCHAR),
         @Result(column="District", property="district", jdbcType=JdbcType.VARCHAR),
@@ -160,7 +160,7 @@ public interface InquiryDataHisMapper {
         @Result(column="Operator", property="operator", jdbcType=JdbcType.VARCHAR),
         @Result(column="ExtendCol", property="extendCol", jdbcType=JdbcType.LONGVARCHAR)
     })
-    InquiryDataHis selectByPrimaryKey(Integer id);
+    InquiryDataHis selectByPrimaryKey(Long id);
 
     @UpdateProvider(type=InquiryDataHisSqlProvider.class, method="updateByExampleSelective")
     int updateByExampleSelective(@Param("record") InquiryDataHis record, @Param("example") InquiryDataHisCond example);
@@ -200,7 +200,7 @@ public interface InquiryDataHisMapper {
           "CreateDateTime = #{createDateTime,jdbcType=TIMESTAMP},",
           "Operator = #{operator,jdbcType=VARCHAR},",
           "ExtendCol = #{extendCol,jdbcType=LONGVARCHAR}",
-        "where ID = #{id,jdbcType=INTEGER}"
+        "where ID = #{id,jdbcType=BIGINT}"
     })
     int updateByPrimaryKeyWithBLOBs(InquiryDataHis record);
 
@@ -229,7 +229,7 @@ public interface InquiryDataHisMapper {
           "Remark = #{remark,jdbcType=VARCHAR},",
           "CreateDateTime = #{createDateTime,jdbcType=TIMESTAMP},",
           "Operator = #{operator,jdbcType=VARCHAR}",
-        "where ID = #{id,jdbcType=INTEGER}"
+        "where ID = #{id,jdbcType=BIGINT}"
     })
     int updateByPrimaryKey(InquiryDataHis record);
 }

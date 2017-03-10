@@ -50,14 +50,12 @@
 	<!-- 只有一个全局异常处理器起作用 (开发环境注释掉)-->
 	<!--<bean id="exceptionResolver" class="com.yunfang.dms.init.OverallExceptionResolver"></bean>-->
 
-	<mvc:interceptors>
-		<!--在此配置将拦截所有的请求-->
-		<!--<bean class="com.yunfang.dms.init.DataSourceInterceptor"/>-->
-		<mvc:interceptor>
-			<!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->
-			<mvc:mapping path="/BaseData/**" />
-			<!-- 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
-			<bean class="com.yunfang.dms.init.DataSourceInterceptor"/>
-		</mvc:interceptor>
-	</mvc:interceptors>
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"
+		  p:ignoreDefaultModelOnRedirect="true" >
+		<property name="messageConverters">
+			<list>
+				<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+			</list>
+		</property>
+	</bean>
 </beans>

@@ -100,8 +100,8 @@ public class TransactionCaseSqlProvider {
             sql.VALUES("CompanyID", "#{companyId,jdbcType=INTEGER}");
         }
         
-        if (record.getPricetime() != null) {
-            sql.VALUES("PriceTime", "#{pricetime,jdbcType=TIMESTAMP}");
+        if (record.getPriceTime() != null) {
+            sql.VALUES("PriceTime", "#{priceTime,jdbcType=TIMESTAMP}");
         }
         
         if (record.getCreateDateTime() != null) {
@@ -154,7 +154,7 @@ public class TransactionCaseSqlProvider {
         if (example != null && example.getOrderByClause() != null) {
             sql.ORDER_BY(example.getOrderByClause());
         }
-        
+
         return sql.toString();
     }
 
@@ -186,14 +186,19 @@ public class TransactionCaseSqlProvider {
         sql.SELECT("PriceTime");
         sql.SELECT("CreateDateTime");
         sql.SELECT("LastUpdateTime");
+        sql.SELECT("ExtendCol");
         sql.FROM("transactioncase");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
             sql.ORDER_BY(example.getOrderByClause());
         }
-        
-        return sql.toString();
+
+        String sqlStr=sql.toString();
+        if(example.getLimit()>0){
+            sqlStr+=" limit " + (example.getStart()>0?example.getStart():"0")+","+example.getLimit();
+        }
+        return sqlStr;
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
@@ -279,8 +284,8 @@ public class TransactionCaseSqlProvider {
             sql.SET("CompanyID = #{record.companyId,jdbcType=INTEGER}");
         }
         
-        if (record.getPricetime() != null) {
-            sql.SET("PriceTime = #{record.pricetime,jdbcType=TIMESTAMP}");
+        if (record.getPriceTime() != null) {
+            sql.SET("PriceTime = #{record.priceTime,jdbcType=TIMESTAMP}");
         }
         
         if (record.getCreateDateTime() != null) {
@@ -322,7 +327,7 @@ public class TransactionCaseSqlProvider {
         sql.SET("ProjectAddress = #{record.projectAddress,jdbcType=VARCHAR}");
         sql.SET("Remark = #{record.remark,jdbcType=VARCHAR}");
         sql.SET("CompanyID = #{record.companyId,jdbcType=INTEGER}");
-        sql.SET("PriceTime = #{record.pricetime,jdbcType=TIMESTAMP}");
+        sql.SET("PriceTime = #{record.priceTime,jdbcType=TIMESTAMP}");
         sql.SET("CreateDateTime = #{record.createDateTime,jdbcType=TIMESTAMP}");
         sql.SET("LastUpdateTime = #{record.lastUpdateTime,jdbcType=TIMESTAMP}");
         sql.SET("ExtendCol = #{record.extendCol,jdbcType=LONGVARCHAR}");
@@ -355,7 +360,7 @@ public class TransactionCaseSqlProvider {
         sql.SET("ProjectAddress = #{record.projectAddress,jdbcType=VARCHAR}");
         sql.SET("Remark = #{record.remark,jdbcType=VARCHAR}");
         sql.SET("CompanyID = #{record.companyId,jdbcType=INTEGER}");
-        sql.SET("PriceTime = #{record.pricetime,jdbcType=TIMESTAMP}");
+        sql.SET("PriceTime = #{record.priceTime,jdbcType=TIMESTAMP}");
         sql.SET("CreateDateTime = #{record.createDateTime,jdbcType=TIMESTAMP}");
         sql.SET("LastUpdateTime = #{record.lastUpdateTime,jdbcType=TIMESTAMP}");
         
@@ -440,8 +445,8 @@ public class TransactionCaseSqlProvider {
             sql.SET("CompanyID = #{companyId,jdbcType=INTEGER}");
         }
         
-        if (record.getPricetime() != null) {
-            sql.SET("PriceTime = #{pricetime,jdbcType=TIMESTAMP}");
+        if (record.getPriceTime() != null) {
+            sql.SET("PriceTime = #{priceTime,jdbcType=TIMESTAMP}");
         }
         
         if (record.getCreateDateTime() != null) {

@@ -246,7 +246,7 @@ function edit(id, event) {
 
 function deleted(id, event) {
     stopBubble(event);
-    _idx = layer.confirm('案例删除后将无法回复,您确定执行次操作？', {
+    _idx = layer.confirm('案例删除后将无法恢复,您确定执行次操作？', {
         btn: ['确认', '取消'],
         icon: 2,
         shade: 0

@@ -89,7 +89,7 @@ public class ReportCaseSqlProvider {
         }
         
         if (record.getTotalprice() != null) {
-            sql.VALUES("TotalPrice", "#{totalprice,jdbcType=DECIMAL}");
+            sql.VALUES("TotalPrice", "#{totalPrice,jdbcType=DECIMAL}");
         }
         
         if (record.getPurpose() != null) {
@@ -112,8 +112,8 @@ public class ReportCaseSqlProvider {
             sql.VALUES("CustomerInfo", "#{customerInfo,jdbcType=VARCHAR}");
         }
         
-        if (record.getRoomProerty() != null) {
-            sql.VALUES("RoomProperty", "#{roomProerty,jdbcType=VARCHAR}");
+        if (record.getRoomProperty() != null) {
+            sql.VALUES("RoomProperty", "#{roomProperty,jdbcType=VARCHAR}");
         }
         
         if (record.getRemark() != null) {
@@ -216,14 +216,19 @@ public class ReportCaseSqlProvider {
         sql.SELECT("CompanyID");
         sql.SELECT("CreateDateTime");
         sql.SELECT("LastUpdateTime");
+        sql.SELECT("ExtendCol");
         sql.FROM("reportcase");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
             sql.ORDER_BY(example.getOrderByClause());
         }
-        
-        return sql.toString();
+
+        String sqlStr=sql.toString();
+        if(example.getLimit()>0){
+            sqlStr+=" limit " + (example.getStart()>0?example.getStart():"0")+","+example.getLimit();
+        }
+        return sqlStr;
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
@@ -298,7 +303,7 @@ public class ReportCaseSqlProvider {
         }
         
         if (record.getTotalprice() != null) {
-            sql.SET("TotalPrice = #{record.totalprice,jdbcType=DECIMAL}");
+            sql.SET("TotalPrice = #{record.totalPrice,jdbcType=DECIMAL}");
         }
         
         if (record.getPurpose() != null) {
@@ -321,8 +326,8 @@ public class ReportCaseSqlProvider {
             sql.SET("CustomerInfo = #{record.customerInfo,jdbcType=VARCHAR}");
         }
         
-        if (record.getRoomProerty() != null) {
-            sql.SET("RoomProperty = #{record.roomProerty,jdbcType=VARCHAR}");
+        if (record.getRoomProperty() != null) {
+            sql.SET("RoomProperty = #{record.roomProperty,jdbcType=VARCHAR}");
         }
         
         if (record.getRemark() != null) {
@@ -369,13 +374,13 @@ public class ReportCaseSqlProvider {
         sql.SET("Toward = #{record.toward,jdbcType=VARCHAR}");
         sql.SET("BuildYear = #{record.buildYear,jdbcType=VARCHAR}");
         sql.SET("Area = #{record.area,jdbcType=DECIMAL}");
-        sql.SET("TotalPrice = #{record.totalprice,jdbcType=DECIMAL}");
+        sql.SET("TotalPrice = #{record.totalPrice,jdbcType=DECIMAL}");
         sql.SET("Purpose = #{record.purpose,jdbcType=VARCHAR}");
         sql.SET("HouseProperty = #{record.houseProperty,jdbcType=VARCHAR}");
         sql.SET("BuildType = #{record.buildType,jdbcType=VARCHAR}");
         sql.SET("Decoration = #{record.decoration,jdbcType=VARCHAR}");
         sql.SET("CustomerInfo = #{record.customerInfo,jdbcType=VARCHAR}");
-        sql.SET("RoomProperty = #{record.roomProerty,jdbcType=VARCHAR}");
+        sql.SET("RoomProperty = #{record.roomProperty,jdbcType=VARCHAR}");
         sql.SET("Remark = #{record.remark,jdbcType=VARCHAR}");
         sql.SET("CompanyID = #{record.companyId,jdbcType=INTEGER}");
         sql.SET("CreateDateTime = #{record.createDateTime,jdbcType=TIMESTAMP}");
@@ -407,13 +412,13 @@ public class ReportCaseSqlProvider {
         sql.SET("Toward = #{record.toward,jdbcType=VARCHAR}");
         sql.SET("BuildYear = #{record.buildYear,jdbcType=VARCHAR}");
         sql.SET("Area = #{record.area,jdbcType=DECIMAL}");
-        sql.SET("TotalPrice = #{record.totalprice,jdbcType=DECIMAL}");
+        sql.SET("TotalPrice = #{record.totalPrice,jdbcType=DECIMAL}");
         sql.SET("Purpose = #{record.purpose,jdbcType=VARCHAR}");
         sql.SET("HouseProperty = #{record.houseProperty,jdbcType=VARCHAR}");
         sql.SET("BuildType = #{record.buildType,jdbcType=VARCHAR}");
         sql.SET("Decoration = #{record.decoration,jdbcType=VARCHAR}");
         sql.SET("CustomerInfo = #{record.customerInfo,jdbcType=VARCHAR}");
-        sql.SET("RoomProperty = #{record.roomProerty,jdbcType=VARCHAR}");
+        sql.SET("RoomProperty = #{record.roomProperty,jdbcType=VARCHAR}");
         sql.SET("Remark = #{record.remark,jdbcType=VARCHAR}");
         sql.SET("CompanyID = #{record.companyId,jdbcType=INTEGER}");
         sql.SET("CreateDateTime = #{record.createDateTime,jdbcType=TIMESTAMP}");
@@ -489,7 +494,7 @@ public class ReportCaseSqlProvider {
         }
         
         if (record.getTotalprice() != null) {
-            sql.SET("TotalPrice = #{totalprice,jdbcType=DECIMAL}");
+            sql.SET("TotalPrice = #{totalPrice,jdbcType=DECIMAL}");
         }
         
         if (record.getPurpose() != null) {
@@ -512,8 +517,8 @@ public class ReportCaseSqlProvider {
             sql.SET("CustomerInfo = #{customerInfo,jdbcType=VARCHAR}");
         }
         
-        if (record.getRoomProerty() != null) {
-            sql.SET("RoomProperty = #{roomProerty,jdbcType=VARCHAR}");
+        if (record.getRoomProperty() != null) {
+            sql.SET("RoomProperty = #{roomProperty,jdbcType=VARCHAR}");
         }
         
         if (record.getRemark() != null) {

@@ -7,7 +7,6 @@ import com.yunfang.dms.entity.InquiryDataCond;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
-import org.apache.ibatis.session.RowBounds;
 
 public class InquiryDataSqlProvider {
 
@@ -206,8 +205,11 @@ public class InquiryDataSqlProvider {
         if (example != null && example.getOrderByClause() != null) {
             sql.ORDER_BY(example.getOrderByClause());
         }
-
-        return sql.toString();
+        String sqlStr=sql.toString();
+        if(example.getLimit()>0){
+            sqlStr+=" limit " + (example.getStart()>0?example.getStart():"0")+","+example.getLimit();
+        }
+        return sqlStr;
     }
 
     public String selectByPaging(InquiryDataCond example) {

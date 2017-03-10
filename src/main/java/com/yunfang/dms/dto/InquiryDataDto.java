@@ -1,6 +1,7 @@
 package com.yunfang.dms.dto;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -39,21 +40,21 @@ public class InquiryDataDto {
 
     private String customerOrg;
 
-    private Date priceTime;
+    private String priceTime;
 
     private String propertyType;
 
     private Integer companyId;
 
-    private Date inquiryTime;
+    private String inquiryTime;
 
     private String inquirySource;
 
     private String remark;
 
-    private Date createDateTime;
+    private String createDateTime;
 
-    private Date lastUpdateTime;
+    private String lastUpdateTime;
 
     private String extendCol;
 
@@ -185,14 +186,17 @@ public class InquiryDataDto {
         this.customerOrg = customerOrg == null ? null : customerOrg.trim();
     }
 
-    public Date getPriceTime() {
+    public String getPriceTime() {
         return priceTime;
     }
 
     public void setPriceTime(Date priceTime) {
-        this.priceTime = priceTime;
+        SimpleDateFormat dataFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.priceTime = dataFormat.format(priceTime);
     }
-
+    public void setPriceTime(String priceTime) {
+        this.priceTime =priceTime;
+    }
     public String getPropertyType() {
         return propertyType;
     }
@@ -209,14 +213,17 @@ public class InquiryDataDto {
         this.companyId = companyId;
     }
 
-    public Date getInquiryTime() {
+    public String getInquiryTime() {
         return inquiryTime;
     }
 
     public void setInquiryTime(Date inquiryTime) {
-        this.inquiryTime = inquiryTime;
+        SimpleDateFormat dataFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.inquiryTime = dataFormat.format(inquiryTime);
     }
-
+    public void setInquiryTime(String inquiryTime) {
+        this.inquiryTime =inquiryTime;
+    }
     public String getInquirySource() {
         return inquirySource;
     }
@@ -233,22 +240,28 @@ public class InquiryDataDto {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public Date getCreateDateTime() {
+    public String getCreateDateTime() {
         return createDateTime;
     }
 
     public void setCreateDateTime(Date createDateTime) {
-        this.createDateTime = createDateTime;
+        SimpleDateFormat dataFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.createDateTime = dataFormat.format(createDateTime);
     }
-
-    public Date getLastUpdateTime() {
+//    public void setCreateDateTime(String createDateTime) {
+//        this.createDateTime = createDateTime;
+//    }
+    public String getLastUpdateTime() {
         return lastUpdateTime;
     }
 
     public void setLastUpdateTime(Date lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
+        SimpleDateFormat dataFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.lastUpdateTime = dataFormat.format(lastUpdateTime);
     }
-
+//    public void setLastUpdateTime(String lastUpdateTime) {
+//        this.lastUpdateTime =lastUpdateTime;
+//    }
     public String getExtendCol() {
         return extendCol;
     }
